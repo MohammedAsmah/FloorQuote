@@ -28,6 +28,7 @@ export const colors = {
     default: "#E2E8F0",
     focus: "#2563EB",
     hover: "#CBD5E1",
+    inactive: "#E2E8F0",
   },
   
   // Accent Colors
