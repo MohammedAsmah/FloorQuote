@@ -39,10 +39,11 @@ export function Calculator() {
     alert("Lead capture form would appear here");
   };
 
-  if (state === "result" && result) {
+  if (state === "result" && result && inputData) {
     return (
       <ResultPage
         result={result}
+        input={inputData}
         onRestart={handleRestart}
         onGetQuotes={handleGetQuotes}
       />
