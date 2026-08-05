@@ -7,37 +7,98 @@ datasource db {
   provider = "postgresql"
 }
 
-model Lead {
-  id            String   @id @default(cuid())
-  name          String
-  email         String
-  phone         String
+// ---------------------------------------------------------------------------
+// Domain enums — mirror src/types/calculator.ts for type-safe persistence
+// ---------------------------------------------------------------------------
 
-  city          String
-
-  coatingType   String
-
-  garageSize    String
-
-  estimatedLow  Float
-  estimatedHigh Float
-
-  createdAt     DateTime @default(now())
+enum GarageSize {
+  one_car
+  two_car
+  three_car
+  oversized
 }
 
+enum CoatingType {
+  epoxy
+  polyaspartic
+  polyurea
+  metallic
+  quartz
+  not_sure
+}
+
+enum FloorCondition {
+  excellent
+  good
+  fair
+  poor
+}
+
+enum CrackLevel {
+  none
+  minor
+  several
+  major
+}
+
+enum ExistingCoating {
+  none
+  paint
+  epoxy
+}
+
+enum DecorativeFinish {
+  none
+  standard_flakes
+  premium_flakes
+}
+
+enum Timeline {
+  asap
+  within_month
+  within_three_months
+  flexible
+}
+
+enum PreferredContactMethod {
+  email
+  phone
+  text
+}
+
+// ---------------------------------------------------------------------------
+// Models
+// ---------------------------------------------------------------------------
+
 model Calculation {
-  id            String   @id @default(cuid())
+  id               String           @id @default(cuid())
+  city             String
+  squareFeet       Float
+  garageSize       GarageSize
+  coatingType      CoatingType
+  floorCondition   FloorCondition
+  crackLevel       CrackLevel
+  existingCoating  ExistingCoating
+  decorativeFinish DecorativeFinish
+  stemWalls        Boolean          @default(false)
+  stepsCount       Int              @default(0)
+  moistureIssues   Boolean          @default(false)
+  timeline         Timeline
+  estimatedLow     Float
+  estimatedHigh    Float
+  recommendedSystem String
+  createdAt        DateTime         @default(now())
 
-  city          String
+  lead Lead?
+}
 
-  coatingType   String
-
-  garageSize    String
-
-  floorCondition String
-
-  estimateLow   Float
-  estimateHigh  Float
-
-  createdAt     DateTime @default(now())
+model Lead {
+  id                     String                 @id @default(cuid())
+  calculationId          String                 @unique
+  calculation            Calculation            @relation(fields: [calculationId], references: [id], onDelete: Cascade)
+  name                   String
+  email                  String
+  phone                  String
+  preferredContactMethod PreferredContactMethod
+  createdAt              DateTime               @default(now())
 }
