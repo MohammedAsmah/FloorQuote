@@ -1,9 +1,20 @@
 import { prisma } from "@/src/lib/prisma";
 import { Card } from "@/src/components/ui/Card";
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
 export default async function TestimonialsPage() {
+  // Check authentication
+  const cookieStore = await cookies();
+  const adminSession = cookieStore.get('admin_session');
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminSession || !adminPassword || adminSession.value !== adminPassword) {
+    redirect('/admin/login');
+  }
+
   try {
     const testimonialCount = await prisma.testimonial.count();
 

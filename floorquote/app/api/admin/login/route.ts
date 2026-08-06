@@ -15,13 +15,13 @@ export async function POST(request: NextRequest) {
     }
 
     if (password === adminPassword) {
-      // Set the admin session cookie
+      // Set the admin session cookie (session-only - expires when browser closes)
       const response = NextResponse.json({ success: true });
       response.cookies.set('admin_session', adminPassword, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
-        maxAge: 60 * 60 * 24 * 7, // 1 week
+        // No maxAge - this makes it a session cookie that expires when browser closes
         path: '/',
       });
       return response;

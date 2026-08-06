@@ -1,9 +1,20 @@
 import { getLeads } from "@/src/lib/admin-data";
 import LeadTable from "@/src/components/admin/LeadTable";
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
 export default async function LeadsPage() {
+  // Check authentication
+  const cookieStore = await cookies();
+  const adminSession = cookieStore.get('admin_session');
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminSession || !adminPassword || adminSession.value !== adminPassword) {
+    redirect('/admin/login');
+  }
+
   try {
     const leads = await getLeads();
 
