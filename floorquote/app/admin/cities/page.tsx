@@ -1,6 +1,8 @@
 import { prisma } from "@/src/lib/prisma";
 import { Card } from "@/src/components/ui/Card";
 
+export const dynamic = 'force-dynamic';
+
 export default async function CitiesPage() {
   const [cityCount, serviceAvailabilityCount, nearbyCount] = await Promise.all([
     prisma.supportedCity.count(),

@@ -1,6 +1,8 @@
 import { prisma } from "@/src/lib/prisma";
 import { Card } from "@/src/components/ui/Card";
 
+export const dynamic = 'force-dynamic';
+
 export default async function BlogPage() {
   const [postCount, categoryCount, tagCount, authorCount] = await Promise.all([
     prisma.blogPost.count(),

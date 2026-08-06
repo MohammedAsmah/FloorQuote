@@ -1,6 +1,8 @@
 import { prisma } from "@/src/lib/prisma";
 import { Card } from "@/src/components/ui/Card";
 
+export const dynamic = 'force-dynamic';
+
 export default async function PricingPage() {
   // server: fetch pricing rules (initial scaffolding)
   let pricing: any[] = [];
