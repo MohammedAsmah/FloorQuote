@@ -88,11 +88,11 @@ export function PriceFactorsCard({ input }: PriceFactorsCardProps) {
   const factors = Object.entries(input).filter(([key]) => factorDescriptions[key as keyof CalculatorInput]);
 
   return (
-    <Card className="p-6 md:p-8">
+    <Card elevated className="p-6 md:p-8">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7 }}
+        transition={{ delay: 0.7, duration: 0.4, ease: "easeOut" }}
       >
         <h3
           className="text-xl font-bold mb-6"
@@ -121,10 +121,11 @@ export function PriceFactorsCard({ input }: PriceFactorsCardProps) {
               <motion.div
                 key={key}
                 className="flex items-start gap-3 p-3 rounded-lg"
-                style={{ backgroundColor: `${colors.background.primary}` }}
+                style={{ backgroundColor: colors.surface.hover }}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8 + index * 0.05 }}
+                whileHover={{ scale: 1.02, backgroundColor: colors.surface.active }}
               >
                 <div className="flex-shrink-0 mt-0.5">{getIcon()}</div>
                 <div className="flex-1">

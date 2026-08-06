@@ -2,7 +2,7 @@
  * Button Component
  * 
  * Premium button component with multiple variants and micro-interactions.
- * Supports primary, secondary, and ghost styles with hover/active states.
+ * Supports primary, secondary, and ghost styles with enhanced hover/active states.
  */
 
 import { forwardRef } from "react";
@@ -11,7 +11,7 @@ import { cn } from "../../lib/utils/cn";
 import { colors, borderRadius, shadows, transitions, typography } from "../../lib/design-system";
 
 interface ButtonProps extends Omit<HTMLMotionProps<"button">, "whileHover" | "whileTap"> {
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: "primary" | "secondary" | "ghost" | "gradient";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
   children: React.ReactNode;
@@ -30,6 +30,7 @@ const buttonVariants = {
     },
     active: {
       scale: 0.98,
+      y: 0,
     },
   },
   secondary: {
@@ -38,11 +39,14 @@ const buttonVariants = {
     border: `1px solid ${colors.border.default}`,
     boxShadow: shadows.sm,
     hover: {
-      backgroundColor: colors.background.primary,
+      backgroundColor: colors.surface.hover,
       borderColor: colors.border.hover,
+      y: -1,
+      boxShadow: shadows.md,
     },
     active: {
       scale: 0.98,
+      y: 0,
     },
   },
   ghost: {
@@ -51,10 +55,26 @@ const buttonVariants = {
     border: "none",
     boxShadow: "none",
     hover: {
-      backgroundColor: `${colors.text.primary}05`,
+      backgroundColor: colors.surface.hover,
+      color: colors.text.primary,
     },
     active: {
       scale: 0.98,
+    },
+  },
+  gradient: {
+    backgroundColor: colors.gradients.blue,
+    color: "#FFFFFF",
+    border: "none",
+    boxShadow: shadows.glowBlue,
+    hover: {
+      y: -2,
+      boxShadow: shadows.glowBlue,
+      scale: 1.02,
+    },
+    active: {
+      scale: 0.98,
+      y: 0,
     },
   },
 };
@@ -81,6 +101,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = "primary", size = "md", isLoading = false, children, className, disabled, ...props }, ref) => {
     const variantStyle = buttonVariants[variant];
     const sizeStyle = sizeStyles[size];
+    const isGradient = variant === "gradient";
 
     return (
       <motion.button
@@ -90,7 +111,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className
         )}
         style={{
-          backgroundColor: variantStyle.backgroundColor,
+          background: isGradient ? variantStyle.backgroundColor : variantStyle.backgroundColor,
           color: variantStyle.color,
           border: variantStyle.border,
           boxShadow: variantStyle.boxShadow,
@@ -101,7 +122,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         }}
         whileHover={!disabled && !isLoading ? variantStyle.hover : undefined}
         whileTap={!disabled && !isLoading ? variantStyle.active : undefined}
-        transition={{ duration: 0.15 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
         disabled={disabled || isLoading}
         {...props}
       >

@@ -14,6 +14,8 @@ export const colors = {
   background: {
     primary: "#F8FAFC",
     card: "#FFFFFF",
+    elevated: "#FFFFFF",
+    glass: "rgba(255, 255, 255, 0.85)",
   },
   
   // Text
@@ -21,6 +23,7 @@ export const colors = {
     primary: "#0F172A",
     secondary: "#475569",
     muted: "#94A3B8",
+    inverse: "#FFFFFF",
   },
   
   // Borders
@@ -29,26 +32,48 @@ export const colors = {
     focus: "#2563EB",
     hover: "#CBD5E1",
     inactive: "#E2E8F0",
+    subtle: "#F1F5F9",
   },
   
   // Accent Colors
   accent: {
     blue: "#2563EB",
     darkBlue: "#1D4ED8",
+    lightBlue: "#3B82F6",
     teal: "#0F766E",
+    purple: "#7C3AED",
+    indigo: "#6366F1",
   },
   
   // Status Colors
   status: {
-    success: "#16A34A",
+    success: "#10B981",
     warning: "#F59E0B",
-    error: "#DC2626",
+    error: "#EF4444",
+    info: "#3B82F6",
   },
   
   // Progress
   progress: {
     active: "#2563EB",
-    inactive: "#CBD5E1",
+    inactive: "#E2E8F0",
+  },
+  
+  // Gradients
+  gradients: {
+    primary: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    blue: "linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)",
+    teal: "linear-gradient(135deg, #14B8A6 0%, #0F766E 100%)",
+    purple: "linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)",
+    success: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+    background: "linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 100%)",
+  },
+  
+  // Surface Colors
+  surface: {
+    hover: "#F1F5F9",
+    active: "#E2E8F0",
+    selected: "#EFF6FF",
   },
 } as const;
 
@@ -121,7 +146,11 @@ export const shadows = {
   md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
   lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
   xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+  "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
   glow: "0 0 0 3px rgb(37 99 235 / 0.1)",
+  glowBlue: "0 0 20px rgb(59 130 246 / 0.3)",
+  glowTeal: "0 0 20px rgb(20 184 166 / 0.3)",
+  inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
 } as const;
 
 // ---------------------------------------------------------------------------

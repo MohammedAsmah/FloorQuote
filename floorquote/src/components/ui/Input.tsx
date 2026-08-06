@@ -1,52 +1,67 @@
-/**
- * Input Component
- * 
- * Premium input component with focus states and validation styling.
- * Supports text, number, and email input types.
- */
-
 import { forwardRef } from "react";
 import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "../../lib/utils/cn";
 import { colors, borderRadius, shadows } from "../../lib/design-system";
 
 interface InputProps extends Omit<HTMLMotionProps<"input">, "whileFocus"> {
-  error?: boolean;
+  error?: boolean | string;
   label?: string;
+  icon?: React.ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ error = false, label, className, ...props }, ref) => {
+  ({ error, label, icon, className, ...props }, ref) => {
+    const hasError = Boolean(error);
+    const errorMessage = typeof error === "string" ? error : undefined;
+
     return (
       <div className="w-full">
         {label && (
           <label
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium mb-2"
             style={{ color: colors.text.primary }}
           >
             {label}
           </label>
         )}
-        <motion.input
-          ref={ref}
-          className={cn(
-            "w-full px-4 py-3 rounded-xl border transition-all duration-200 focus:outline-none",
-            error ? "border-red-500" : "border-gray-200 focus:border-blue-500",
-            className
+        <div className="relative flex items-center">
+          {icon && (
+            <div
+              className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
+              style={{ color: hasError ? colors.status.error : colors.text.muted }}
+            >
+              {icon}
+            </div>
           )}
-          style={{
-            borderColor: error ? colors.status.error : colors.border.default,
-            borderRadius: borderRadius.lg,
-            fontSize: "1rem",
-          }}
-          whileFocus={{
-            boxShadow: error ? "0 0 0 3px rgb(220 38 38 / 0.1)" : shadows.glow,
-          }}
-          {...props}
-        />
+          <motion.input
+            ref={ref}
+            className={cn(
+              "w-full py-3 rounded-xl border transition-all duration-200 focus:outline-none",
+              icon ? "pl-12 pr-4" : "px-4",
+              className
+            )}
+            style={{
+              borderColor: hasError ? colors.status.error : colors.border.default,
+              borderRadius: borderRadius.lg,
+              fontSize: "1rem",
+              backgroundColor: colors.background.card,
+              color: colors.text.primary,
+            }}
+            whileFocus={{
+              boxShadow: hasError ? "0 0 0 3px rgb(220 38 38 / 0.1)" : shadows.glow,
+            }}
+            {...props}
+          />
+        </div>
+        {errorMessage && (
+          <p className="mt-1.5 text-xs font-medium text-red-500" style={{ color: colors.status.error }}>
+            {errorMessage}
+          </p>
+        )}
       </div>
     );
   }
 );
 
 Input.displayName = "Input";
+

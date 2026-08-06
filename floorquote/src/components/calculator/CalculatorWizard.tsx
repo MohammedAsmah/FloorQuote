@@ -236,8 +236,8 @@ export function CalculatorWizard({ onComplete }: CalculatorWizardProps) {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
-      style={{ backgroundColor: colors.background.primary }}
+      className="min-h-screen"
+      style={{ background: colors.gradients.background }}
     >
       <ProgressBar current={currentStep + 1} total={STEPS.length} />
 
@@ -245,14 +245,19 @@ export function CalculatorWizard({ onComplete }: CalculatorWizardProps) {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -50, scale: 0.95 }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <div className="mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
+              className="mb-8"
+            >
               <h1
-                className="text-3xl font-bold mb-2"
+                className="text-3xl md:text-4xl font-bold mb-2"
                 style={{ color: colors.text.primary, fontSize: typography.fontSize["3xl"] }}
               >
                 {STEPS[currentStep].title}
@@ -263,12 +268,17 @@ export function CalculatorWizard({ onComplete }: CalculatorWizardProps) {
               >
                 {STEPS[currentStep].description}
               </p>
-            </div>
+            </motion.div>
 
             {renderQuestion()}
 
             {/* Navigation buttons */}
-            <div className="flex justify-between items-center mt-8">
+            <motion.div
+              className="flex justify-between items-center mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+            >
               <Button
                 variant="secondary"
                 onClick={handleBack}
@@ -277,13 +287,13 @@ export function CalculatorWizard({ onComplete }: CalculatorWizardProps) {
                 Back
               </Button>
               <Button
-                variant="primary"
+                variant="gradient"
                 onClick={handleNext}
                 disabled={!canProceed()}
               >
                 {currentStep === STEPS.length - 1 ? "Get Estimate" : "Continue"}
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
         </AnimatePresence>
       </div>

@@ -52,11 +52,11 @@ export function BreakdownCard({ total }: BreakdownCardProps) {
   ];
 
   return (
-    <Card className="p-6 md:p-8">
+    <Card elevated className="p-6 md:p-8">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
+        transition={{ delay: 0.6, duration: 0.4, ease: "easeOut" }}
       >
         <h3
           className="text-xl font-bold mb-6"
@@ -83,15 +83,18 @@ export function BreakdownCard({ total }: BreakdownCardProps) {
                 </span>
               </div>
               <div
-                className="h-2 rounded-full overflow-hidden"
+                className="h-2.5 rounded-full overflow-hidden"
                 style={{ backgroundColor: colors.border.inactive }}
               >
                 <motion.div
                   className="h-full rounded-full"
-                  style={{ backgroundColor: item.color }}
+                  style={{ 
+                    background: item.color,
+                    boxShadow: `0 0 10px ${item.color}40`,
+                  }}
                   initial={{ width: 0 }}
                   animate={{ width: `${item.percentage}%` }}
-                  transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+                  transition={{ delay: 0.8 + index * 0.1, duration: 0.6, ease: "easeOut" }}
                 />
               </div>
             </motion.div>

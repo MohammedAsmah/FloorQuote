@@ -1,7 +1,9 @@
+"use client";
+
 /**
  * Card Component
  * 
- * Premium card component with soft shadows and elegant borders.
+ * Premium card component with enhanced shadows, glassmorphism, and elegant borders.
  * Used for content containers and option selections.
  */
 
@@ -15,32 +17,54 @@ interface CardProps {
   hover?: boolean;
   selected?: boolean;
   onClick?: () => void;
+  elevated?: boolean;
+  glassmorphism?: boolean;
 }
 
-export function Card({ children, className, hover = false, selected = false, onClick }: CardProps) {
+export function Card({ 
+  children, 
+  className, 
+  hover = false, 
+  selected = false, 
+  onClick,
+  elevated = false,
+  glassmorphism = false
+}: CardProps) {
+  const cardShadow = elevated ? shadows.xl : shadows.md;
+  const bgColor = glassmorphism ? colors.background.glass : colors.background.card;
+
   return (
     <motion.div
       className={cn(
-        "bg-white rounded-2xl border transition-all duration-200",
+        "rounded-2xl border transition-all duration-300",
         selected
-          ? "border-blue-500 bg-blue-50"
+          ? "border-blue-500"
           : "border-gray-200",
-        hover && !onClick && "hover:shadow-lg",
-        onClick && "cursor-pointer hover:shadow-lg hover:-translate-y-1",
+        hover && !onClick && "hover:shadow-xl",
+        onClick && "cursor-pointer",
         className
       )}
       style={{
         borderColor: selected ? colors.accent.blue : colors.border.default,
-        backgroundColor: selected ? `${colors.accent.blue}08` : colors.background.card,
+        backgroundColor: selected ? colors.surface.selected : bgColor,
         borderRadius: borderRadius.xl,
-        boxShadow: shadows.md,
+        boxShadow: selected ? shadows.glowBlue : cardShadow,
+        backdropFilter: glassmorphism ? "blur(12px)" : "none",
+        WebkitBackdropFilter: glassmorphism ? "blur(12px)" : "none",
       }}
-      whileHover={onClick ? { y: -4, transition: { duration: 0.2 } } : undefined}
+      whileHover={onClick ? { 
+        y: -4, 
+        boxShadow: shadows.xl,
+        transition: { duration: 0.3, ease: "easeOut" } 
+      } : hover ? {
+        boxShadow: shadows.lg,
+        transition: { duration: 0.3 }
+      } : undefined}
       whileTap={onClick ? { scale: 0.98 } : undefined}
       onClick={onClick}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
     >
       {children}
     </motion.div>
