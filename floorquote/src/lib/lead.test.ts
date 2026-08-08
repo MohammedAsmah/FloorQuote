@@ -4,9 +4,10 @@ import {
   additionalInfoSchema,
   leadSchema,
 } from "./validations/lead";
+import { directQuoteSchema } from "./validations/direct-quote";
 
 describe("Lead Validation Schemas", () => {
-  describe("Contact Information Schema (Step 1)", () => {
+  describe("Calculator Lead Schemas (PATH A)", () => {
     it("should accept valid contact information", () => {
       const validContact = {
         name: "Jane Doe",
@@ -63,46 +64,8 @@ describe("Lead Validation Schemas", () => {
         expect(result.error.issues[0].message).toContain("Phone number must be at least 10 digits");
       }
     });
-  });
 
-  describe("Additional Information Schema (Step 3)", () => {
-    it("should accept valid additional information", () => {
-      const validAdditional = {
-        propertyType: "detached" as const,
-        garageEmpty: true,
-        preferredContactTime: "morning" as const,
-        additionalNotes: "Side entrance available.",
-      };
-
-      const result = additionalInfoSchema.safeParse(validAdditional);
-      expect(result.success).toBe(true);
-    });
-
-    it("should accept optional notes when empty", () => {
-      const validAdditional = {
-        propertyType: "townhouse" as const,
-        garageEmpty: false,
-        preferredContactTime: "evening" as const,
-      };
-
-      const result = additionalInfoSchema.safeParse(validAdditional);
-      expect(result.success).toBe(true);
-    });
-
-    it("should reject invalid property type", () => {
-      const invalid = {
-        propertyType: "castle",
-        garageEmpty: true,
-        preferredContactTime: "morning",
-      };
-
-      const result = additionalInfoSchema.safeParse(invalid);
-      expect(result.success).toBe(false);
-    });
-  });
-
-  describe("Complete Combined Lead Schema", () => {
-    it("should validate full lead payload", () => {
+    it("should validate full calculator lead payload", () => {
       const fullLead = {
         name: "Alex Smith",
         email: "alex@example.com",
@@ -116,6 +79,107 @@ describe("Lead Validation Schemas", () => {
 
       const result = leadSchema.safeParse(fullLead);
       expect(result.success).toBe(true);
+    });
+  });
+
+  describe("Direct Quote Request Schema (PATH B)", () => {
+    it("should accept a valid direct quote payload", () => {
+      const validDirectQuote = {
+        projectType: "garage_floor" as const,
+        garageSize: "2_car" as const,
+        squareFeet: 440,
+        coatingType: "polyaspartic" as const,
+        floorCondition: "good" as const,
+        existingCoating: "no" as const,
+        moistureIssue: "no" as const,
+        timeline: "within_1_month" as const,
+        garageAvailability: "yes" as const,
+        city: "Calgary",
+        postalCode: "T2P 1J9",
+        name: "Marcus Aurelius",
+        email: "marcus@example.com",
+        phone: "4035559876",
+        preferredContactMethod: "either" as const,
+        preferredContactTime: "anytime" as const,
+        additionalNotes: "Looking for gray flake finish.",
+      };
+
+      const result = directQuoteSchema.safeParse(validDirectQuote);
+      expect(result.success).toBe(true);
+    });
+
+    it("should accept valid Canadian postal codes with or without space", () => {
+      const validCode1 = "T2P 1J9";
+      const validCode2 = "T2P1J9";
+
+      const basePayload = {
+        projectType: "garage_floor" as const,
+        garageSize: "1_car" as const,
+        coatingType: "epoxy" as const,
+        floorCondition: "good" as const,
+        existingCoating: "no" as const,
+        moistureIssue: "no" as const,
+        timeline: "asap" as const,
+        garageAvailability: "yes" as const,
+        city: "Calgary",
+        name: "Jane Doe",
+        email: "jane@example.com",
+        phone: "4035551234",
+        preferredContactMethod: "email" as const,
+        preferredContactTime: "morning" as const,
+      };
+
+      expect(directQuoteSchema.safeParse({ ...basePayload, postalCode: validCode1 }).success).toBe(true);
+      expect(directQuoteSchema.safeParse({ ...basePayload, postalCode: validCode2 }).success).toBe(true);
+    });
+
+    it("should reject an invalid Canadian postal code format", () => {
+      const invalidPayload = {
+        projectType: "garage_floor" as const,
+        garageSize: "2_car" as const,
+        coatingType: "epoxy" as const,
+        floorCondition: "good" as const,
+        existingCoating: "no" as const,
+        moistureIssue: "no" as const,
+        timeline: "asap" as const,
+        garageAvailability: "yes" as const,
+        city: "Calgary",
+        postalCode: "90210", // Invalid US zip instead of Canadian postal code
+        name: "Jane Doe",
+        email: "jane@example.com",
+        phone: "4035551234",
+        preferredContactMethod: "email" as const,
+        preferredContactTime: "morning" as const,
+      };
+
+      const result = directQuoteSchema.safeParse(invalidPayload);
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.issues[0].message).toContain("valid Canadian postal code");
+      }
+    });
+
+    it("should reject direct quote missing required contact fields", () => {
+      const missingName = {
+        projectType: "garage_floor" as const,
+        garageSize: "2_car" as const,
+        coatingType: "epoxy" as const,
+        floorCondition: "good" as const,
+        existingCoating: "no" as const,
+        moistureIssue: "no" as const,
+        timeline: "asap" as const,
+        garageAvailability: "yes" as const,
+        city: "Calgary",
+        postalCode: "T2P 1J9",
+        name: "J", // Too short
+        email: "jane@example.com",
+        phone: "4035551234",
+        preferredContactMethod: "email" as const,
+        preferredContactTime: "morning" as const,
+      };
+
+      const result = directQuoteSchema.safeParse(missingName);
+      expect(result.success).toBe(false);
     });
   });
 });

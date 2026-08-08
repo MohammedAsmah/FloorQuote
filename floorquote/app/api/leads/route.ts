@@ -3,9 +3,9 @@ import {
   contactInfoSchema,
   additionalInfoSchema,
 } from "@/src/lib/validations/lead";
+import { directQuoteSchema } from "@/src/lib/validations/direct-quote";
 
 export async function POST(request: Request) {
-  // Generate fallback reference number first so it's ready in all code paths
   const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
   const timestampPart = Date.now().toString(36).substring(3, 7).toUpperCase();
   const referenceNumber = `FQ-${timestampPart}-${randomPart}`;
@@ -21,6 +21,79 @@ export async function POST(request: Request) {
       );
     }
 
+    const { source = "CALCULATOR" } = body;
+
+    // -------------------------------------------------------------------------
+    // PATH B: DIRECT QUOTE SUBMISSION
+    // -------------------------------------------------------------------------
+    if (source === "DIRECT" || body.directQuoteData) {
+      const payload = body.directQuoteData || body;
+      const validated = directQuoteSchema.parse(payload);
+
+      try {
+        const { prisma } = await import("@/src/lib/prisma");
+        const {
+          LeadSource,
+          LeadStatus,
+          PreferredContactMethod,
+          PreferredContactTime,
+        } = await import("@/generated/prisma/enums");
+
+        const contactMethod =
+          validated.preferredContactMethod === "either"
+            ? PreferredContactMethod.phone
+            : (validated.preferredContactMethod as any);
+
+        const contactTime =
+          validated.preferredContactTime === "anytime"
+            ? PreferredContactTime.any
+            : (validated.preferredContactTime as any);
+
+        const lead = await prisma.lead.create({
+          data: {
+            referenceNumber,
+            source: LeadSource.DIRECT,
+            name: validated.name,
+            email: validated.email,
+            phone: validated.phone,
+            preferredContactMethod: contactMethod,
+            preferredContactTime: contactTime,
+            additionalNotes: validated.additionalNotes || null,
+            city: validated.city || "Calgary",
+            postalCode: validated.postalCode,
+            projectType: validated.projectType,
+            projectTypeOther: validated.projectTypeOther || null,
+            garageSizeDirect: validated.garageSize,
+            squareFeetDirect: validated.squareFeet || null,
+            coatingTypeDirect: validated.coatingType,
+            floorConditionDirect: validated.floorCondition,
+            existingCoatingDirect: validated.existingCoating,
+            existingCoatingOther: validated.existingCoatingOther || null,
+            moistureIssueDirect: validated.moistureIssue,
+            timelineDirect: validated.timeline,
+            garageAvailability: validated.garageAvailability,
+            status: LeadStatus.NEW,
+          },
+        });
+
+        return NextResponse.json({
+          success: true,
+          referenceNumber: lead.referenceNumber,
+          leadId: lead.id,
+        });
+      } catch (dbError) {
+        console.warn("Database connection issue, returning development fallback response for Direct quote:", dbError);
+        return NextResponse.json({
+          success: true,
+          referenceNumber,
+          warning: "Direct quote lead captured (local dev mode)",
+        });
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // PATH A: CALCULATOR QUOTE SUBMISSION
+    // -------------------------------------------------------------------------
     const { calculatorData, contactInfo, additionalInfo } = body;
 
     if (!calculatorData || !contactInfo || !additionalInfo) {
@@ -30,11 +103,9 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate payloads
     const validatedContact = contactInfoSchema.parse(contactInfo);
     const validatedAdditional = additionalInfoSchema.parse(additionalInfo);
 
-    // Try saving in Prisma database dynamically
     try {
       const { prisma } = await import("@/src/lib/prisma");
       const {
@@ -49,6 +120,7 @@ export async function POST(request: Request) {
         PropertyType,
         PreferredContactTime,
         LeadStatus,
+        LeadSource,
       } = await import("@/generated/prisma/enums");
 
       let garageSize = (calculatorData.garageSize as any) || GarageSize.two_car;
@@ -63,6 +135,7 @@ export async function POST(request: Request) {
       const lead = await prisma.lead.create({
         data: {
           referenceNumber,
+          source: LeadSource.CALCULATOR,
           status: LeadStatus.NEW,
           name: validatedContact.name,
           email: validatedContact.email,
@@ -72,6 +145,7 @@ export async function POST(request: Request) {
           garageEmpty: Boolean(validatedAdditional.garageEmpty),
           preferredContactTime: validatedAdditional.preferredContactTime as typeof PreferredContactTime[keyof typeof PreferredContactTime],
           additionalNotes: validatedAdditional.additionalNotes || null,
+          city: calculatorData.city || "Calgary",
           calculation: {
             create: {
               city: calculatorData.city || "Calgary",
@@ -116,4 +190,3 @@ export async function POST(request: Request) {
     });
   }
 }
-

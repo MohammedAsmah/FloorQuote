@@ -52,16 +52,23 @@ export async function getRecentActivity(limit = 6) {
   return activity.map((lead) => ({
     id: lead.id,
     referenceNumber: lead.referenceNumber,
+    source: (lead as any).source ?? "CALCULATOR",
     name: lead.name,
     phone: lead.phone,
-    city: lead.calculation.city,
+    city: lead.calculation?.city ?? lead.city ?? "Calgary",
     status: lead.status,
     createdAt: lead.createdAt,
   }));
 }
 
-export async function getLeads() {
+export async function getLeads(sourceFilter?: "ALL" | "CALCULATOR" | "DIRECT") {
+  const whereClause: any = {};
+  if (sourceFilter && sourceFilter !== "ALL") {
+    whereClause.source = sourceFilter;
+  }
+
   const leads = await prisma.lead.findMany({
+    where: whereClause,
     orderBy: { createdAt: "desc" },
     include: { calculation: true },
     take: 100,
@@ -70,36 +77,55 @@ export async function getLeads() {
   return leads.map((lead) => ({
     id: lead.id,
     referenceNumber: lead.referenceNumber,
+    source: (lead as any).source ?? "CALCULATOR",
     name: lead.name,
     email: lead.email,
     phone: lead.phone,
-    city: lead.calculation.city,
-    estimate: lead.calculation.estimatedHigh,
+    city: lead.calculation?.city ?? lead.city ?? "Calgary",
+    postalCode: lead.postalCode ?? null,
+    estimate: lead.calculation?.estimatedHigh ?? null,
     status: lead.status,
     createdAt: lead.createdAt.toISOString(),
     updatedAt: lead.updatedAt.toISOString(),
-    propertyType: lead.propertyType,
+    propertyType: lead.propertyType ?? null,
     preferredContactTime: lead.preferredContactTime,
-    garageEmpty: lead.garageEmpty,
-    additionalNotes: lead.additionalNotes,
-    internalNotes: lead.internalNotes,
+    preferredContactMethod: lead.preferredContactMethod,
+    garageEmpty: lead.garageEmpty ?? null,
+    additionalNotes: lead.additionalNotes ?? null,
+    internalNotes: lead.internalNotes ?? null,
     saleValue: lead.saleValue ?? null,
     soldAt: lead.soldAt?.toISOString() ?? null,
-    calculation: {
-      city: lead.calculation.city,
-      estimatedLow: lead.calculation.estimatedLow,
-      estimatedHigh: lead.calculation.estimatedHigh,
-      coatingType: lead.calculation.coatingType,
-      floorCondition: lead.calculation.floorCondition,
-      crackLevel: lead.calculation.crackLevel,
-      existingCoating: lead.calculation.existingCoating,
-      decorativeFinish: lead.calculation.decorativeFinish,
-      stemWalls: lead.calculation.stemWalls,
-      stepsCount: lead.calculation.stepsCount,
-      moistureIssues: lead.calculation.moistureIssues,
-      timeline: lead.calculation.timeline,
-      recommendedSystem: lead.calculation.recommendedSystem,
-    },
+
+    // Direct quote details
+    projectType: (lead as any).projectType ?? null,
+    projectTypeOther: (lead as any).projectTypeOther ?? null,
+    garageSizeDirect: (lead as any).garageSizeDirect ?? null,
+    squareFeetDirect: (lead as any).squareFeetDirect ?? null,
+    coatingTypeDirect: (lead as any).coatingTypeDirect ?? null,
+    floorConditionDirect: (lead as any).floorConditionDirect ?? null,
+    existingCoatingDirect: (lead as any).existingCoatingDirect ?? null,
+    existingCoatingOther: (lead as any).existingCoatingOther ?? null,
+    moistureIssueDirect: (lead as any).moistureIssueDirect ?? null,
+    timelineDirect: (lead as any).timelineDirect ?? null,
+    garageAvailability: (lead as any).garageAvailability ?? null,
+
+    calculation: lead.calculation
+      ? {
+          city: lead.calculation.city,
+          estimatedLow: lead.calculation.estimatedLow,
+          estimatedHigh: lead.calculation.estimatedHigh,
+          coatingType: lead.calculation.coatingType,
+          floorCondition: lead.calculation.floorCondition,
+          crackLevel: lead.calculation.crackLevel,
+          existingCoating: lead.calculation.existingCoating,
+          decorativeFinish: lead.calculation.decorativeFinish,
+          stemWalls: lead.calculation.stemWalls,
+          stepsCount: lead.calculation.stepsCount,
+          moistureIssues: lead.calculation.moistureIssues,
+          timeline: lead.calculation.timeline,
+          recommendedSystem: lead.calculation.recommendedSystem,
+        }
+      : null,
   }));
 }
 
@@ -177,29 +203,30 @@ export async function getAnalyticsOverview() {
     include: { calculation: true },
   });
 
-  const leadVolume = leads.reduce<Record<string, number>>((acc, lead) => {
+  const leadVolume = leads.reduce<Record<string, number>>((acc: Record<string, number>, lead: any) => {
     acc[lead.status] = (acc[lead.status] ?? 0) + 1;
     return acc;
   }, {});
 
-  const topCities = leads.reduce<Record<string, number>>((acc, lead) => {
-    const city = lead.calculation.city;
+  const topCities = leads.reduce<Record<string, number>>((acc: Record<string, number>, lead: any) => {
+    const city = lead.calculation?.city ?? lead.city ?? "Calgary";
     acc[city] = (acc[city] ?? 0) + 1;
     return acc;
   }, {});
 
-  const coatingCounts = leads.reduce<Record<string, number>>((acc, lead) => {
-    const coating = lead.calculation.coatingType;
+  const coatingCounts = leads.reduce<Record<string, number>>((acc: Record<string, number>, lead: any) => {
+    const coating = lead.calculation?.coatingType ?? lead.coatingTypeDirect ?? "Not sure";
     acc[coating] = (acc[coating] ?? 0) + 1;
     return acc;
   }, {});
 
-  const averageEstimate = leads.length
-    ? leads.reduce((sum, lead) => sum + lead.calculation.estimatedHigh, 0) / leads.length
+  const calculatedLeads = leads.filter((l: any) => l.calculation !== null);
+  const averageEstimate = calculatedLeads.length
+    ? calculatedLeads.reduce((sum: number, lead: any) => sum + (lead.calculation?.estimatedHigh ?? 0), 0) / calculatedLeads.length
     : 0;
 
-  const timelineDemand = leads.reduce<Record<string, number>>((acc, lead) => {
-    const timeline = lead.calculation.timeline;
+  const timelineDemand = leads.reduce<Record<string, number>>((acc: Record<string, number>, lead: any) => {
+    const timeline = lead.calculation?.timeline ?? lead.timelineDirect ?? "Flexible";
     acc[timeline] = (acc[timeline] ?? 0) + 1;
     return acc;
   }, {});

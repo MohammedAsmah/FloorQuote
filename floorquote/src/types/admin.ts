@@ -30,27 +30,45 @@ export type LeadCalculation = {
 export type LeadTableRow = {
   id: string;
   referenceNumber: string;
+  source: "CALCULATOR" | "DIRECT";
   name: string;
   email: string;
   phone: string;
   city: string;
-  estimate: number;
+  postalCode?: string | null;
+  estimate: number | null;
   status: string;
   createdAt: string;
   updatedAt: string;
-  propertyType: string;
+  propertyType?: string | null;
   preferredContactTime: string;
-  garageEmpty: boolean;
+  preferredContactMethod?: string;
+  garageEmpty?: boolean | null;
   additionalNotes: string | null;
   internalNotes: string | null;
   saleValue: number | null;
   soldAt: string | null;
-  calculation: LeadCalculation;
+
+  // Direct Quote Fields
+  projectType?: string | null;
+  projectTypeOther?: string | null;
+  garageSizeDirect?: string | null;
+  squareFeetDirect?: number | null;
+  coatingTypeDirect?: string | null;
+  floorConditionDirect?: string | null;
+  existingCoatingDirect?: string | null;
+  existingCoatingOther?: string | null;
+  moistureIssueDirect?: string | null;
+  timelineDirect?: string | null;
+  garageAvailability?: string | null;
+
+  calculation: LeadCalculation | null;
 };
 
 export type RecentActivityRow = {
   id: string;
   referenceNumber: string;
+  source?: "CALCULATOR" | "DIRECT";
   name: string;
   phone: string;
   city: string;
