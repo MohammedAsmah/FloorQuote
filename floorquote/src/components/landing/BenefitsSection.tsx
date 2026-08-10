@@ -40,19 +40,23 @@ export function BenefitsSection() {
 
   return (
     <section
+      className="benefits-section"
       style={{
-        backgroundColor: colors.background.card,
+        backgroundColor: colors.background.primary,
         padding: '6rem 0',
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
       <motion.div
+        className="benefits-container"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
-        style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}
+        style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', width: '100%', boxSizing: 'border-box' }}
       >
         <motion.div
+          className="benefits-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -83,15 +87,19 @@ export function BenefitsSection() {
         </motion.div>
 
         <motion.div
+          className="benefits-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
             gap: '2rem',
+            width: '100%',
+            boxSizing: 'border-box',
           }}
         >
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
+              className="benefit-card"
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
               style={{
@@ -101,6 +109,8 @@ export function BenefitsSection() {
                 boxShadow: shadows.sm,
                 border: `1px solid ${colors.border.default}`,
                 transition: `box-shadow ${transitions.normal}, transform ${transitions.normal}`,
+                width: '100%',
+                boxSizing: 'border-box',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow = shadows.lg;
@@ -110,6 +120,7 @@ export function BenefitsSection() {
               }}
             >
               <div
+                className="benefit-icon"
                 style={{
                   width: '56px',
                   height: '56px',
@@ -124,6 +135,7 @@ export function BenefitsSection() {
                 <benefit.icon size={28} color={colors.accent.teal} />
               </div>
               <h3
+                className="benefit-title"
                 style={{
                   fontSize: '1.25rem',
                   fontWeight: '600',
@@ -134,6 +146,7 @@ export function BenefitsSection() {
                 {benefit.title}
               </h3>
               <p
+                className="benefit-desc"
                 style={{
                   fontSize: '1rem',
                   lineHeight: '1.6',
@@ -149,11 +162,36 @@ export function BenefitsSection() {
 
       <style jsx global>{`
         @media (max-width: 640px) {
-          section > div > div:last-child {
-            grid-template-columns: 1fr;
-          }
           section h2 {
             font-size: 2rem !important;
+          }
+          .benefits-container {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+          }
+          .benefits-header {
+            margin-bottom: 2.5rem !important;
+          }
+          .benefits-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+          .benefit-card {
+            padding: 1.5rem !important;
+            border-radius: 0.875rem !important;
+          }
+          .benefit-icon {
+            width: 44px !important;
+            height: 44px !important;
+            margin-bottom: 1rem !important;
+          }
+          .benefit-title {
+            font-size: 1.1rem !important;
+            margin-bottom: 0.4rem !important;
+          }
+          .benefit-desc {
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
           }
         }
       `}</style>

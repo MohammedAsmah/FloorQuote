@@ -23,6 +23,7 @@ export function ComparisonSection() {
 
   return (
     <section
+      className="comparison-section"
       style={{
         backgroundColor: colors.background.card,
         padding: '6rem 0',
@@ -159,6 +160,7 @@ export function ComparisonSection() {
           >
             {/* Premium badge */}
             <div
+              className="premium-badge"
               style={{
                 position: 'absolute',
                 top: '1.5rem',

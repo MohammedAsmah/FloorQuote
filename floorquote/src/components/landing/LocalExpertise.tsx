@@ -40,8 +40,9 @@ export function LocalExpertise() {
 
   return (
     <section
+      className="local-expertise"
       style={{
-        backgroundColor: colors.background.card,
+        backgroundColor: colors.background.primary,
         padding: '6rem 0',
         position: 'relative',
       }}
@@ -87,9 +88,11 @@ export function LocalExpertise() {
         <motion.div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
             gap: '2rem',
             marginBottom: '4rem',
+            width: '100%',
+            boxSizing: 'border-box',
           }}
         >
           {factors.map((factor, index) => (
@@ -104,6 +107,8 @@ export function LocalExpertise() {
                 boxShadow: shadows.sm,
                 border: `1px solid ${colors.border.default}`,
                 transition: `box-shadow ${transitions.normal}, transform ${transitions.normal}`,
+                width: '100%',
+                boxSizing: 'border-box',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow = shadows.lg;

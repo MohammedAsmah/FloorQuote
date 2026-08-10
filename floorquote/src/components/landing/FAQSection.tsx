@@ -41,6 +41,7 @@ export function FAQSection() {
 
   return (
     <section
+      className="faq-section"
       style={{
         backgroundColor: colors.background.primary,
         padding: '6rem 0',

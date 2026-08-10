@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Calculator, BookOpen, HelpCircle, Mail, Info } from 'lucide-react';
+import { Menu, X, Calculator, BookOpen, Mail, Info } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { colors, shadows, transitions, zIndex } from '@/lib/design-system';
@@ -18,6 +18,18 @@ export function Navigation() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: 'Calculator', href: '/calculator', icon: Calculator },
@@ -57,6 +69,7 @@ export function Navigation() {
                 alt="FloorQuote"
                 width={160}
                 height={40}
+                className="nav-logo"
                 style={{ objectFit: 'contain' }}
               />
             </motion.div>
@@ -241,6 +254,12 @@ export function Navigation() {
           }
           .mobile-menu-btn {
             display: none !important;
+          }
+        }
+        @media (max-width: 639px) {
+          .nav-logo {
+            width: 120px !important;
+            height: 30px !important;
           }
         }
       `}</style>

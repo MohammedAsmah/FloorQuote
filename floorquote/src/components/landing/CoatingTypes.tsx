@@ -50,6 +50,7 @@ export function CoatingTypes() {
 
   return (
     <section
+      className="coating-types"
       style={{
         backgroundColor: colors.background.primary,
         padding: '6rem 0',

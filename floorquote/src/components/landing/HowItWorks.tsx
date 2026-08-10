@@ -29,6 +29,7 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
+      className="how-it-works"
       style={{
         backgroundColor: colors.background.primary,
         padding: '6rem 0',
@@ -36,6 +37,7 @@ export function HowItWorks() {
       }}
     >
       <motion.div
+        className="how-it-works-container"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
@@ -46,7 +48,7 @@ export function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: '5rem' }}
+          style={{ textAlign: 'center', marginBottom: '1rem' }}
         >
           <h2
             style={{
@@ -73,6 +75,7 @@ export function HowItWorks() {
 
         <div style={{ position: 'relative' }}>
           <motion.div
+            className="how-it-works-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -86,6 +89,7 @@ export function HowItWorks() {
                 style={{ position: 'relative' }}
               >
                 <motion.div
+                  className="how-it-works-card"
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.3 }}
                   style={{
@@ -105,38 +109,49 @@ export function HowItWorks() {
                     e.currentTarget.style.boxShadow = shadows.md;
                   }}
                 >
-                  {/* Step number */}
+                  {/* Header row: icon + step number */}
                   <div
+                    className="how-it-works-card-header"
                     style={{
-                      position: 'absolute',
-                      top: '-1rem',
-                      left: '2rem',
-                      fontSize: '4rem',
-                      fontWeight: '700',
-                      color: 'rgba(37, 99, 235, 0.1)',
-                      lineHeight: '1',
-                    }}
-                  >
-                    {step.step}
-                  </div>
-
-                  {/* Icon */}
-                  <div
-                    style={{
-                      width: '64px',
-                      height: '64px',
-                      borderRadius: '1.25rem',
-                      backgroundColor: 'rgba(37, 99, 235, 0.1)',
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: 'space-between',
                       marginBottom: '1.5rem',
                     }}
                   >
-                    <step.icon size={32} color={colors.accent.blue} />
+                    {/* Icon */}
+                    <div
+                      className="step-icon"
+                      style={{
+                        width: '64px',
+                        height: '64px',
+                        borderRadius: '1.25rem',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <step.icon size={32} color={colors.accent.blue} />
+                    </div>
+
+                    {/* Step number */}
+                    <div
+                      className="step-number"
+                      style={{
+                        fontSize: '3rem',
+                        fontWeight: '700',
+                        color: 'rgba(37, 99, 235, 0.15)',
+                        lineHeight: '1',
+                      }}
+                    >
+                      {step.step}
+                    </div>
                   </div>
 
                   <h3
+                    className="how-it-works-card-title"
                     style={{
                       fontSize: '1.5rem',
                       fontWeight: '600',
@@ -147,6 +162,7 @@ export function HowItWorks() {
                     {step.title}
                   </h3>
                   <p
+                    className="how-it-works-card-desc"
                     style={{
                       fontSize: '1rem',
                       lineHeight: '1.6',
@@ -203,14 +219,45 @@ export function HowItWorks() {
           }
         }
         @media (max-width: 1024px) {
-          section > div > div:last-child {
-            grid-template-columns: 1fr;
-            gap: 3rem;
+          .how-it-works-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
           }
         }
         @media (max-width: 640px) {
           section h2 {
             font-size: 2rem !important;
+          }
+          .how-it-works-container {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+          }
+          .how-it-works-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+          .how-it-works-card {
+            padding: 1.5rem !important;
+            border-radius: 1.25rem !important;
+          }
+          .how-it-works-card-header {
+            margin-bottom: 1rem !important;
+          }
+          .step-icon {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 1rem !important;
+          }
+          .step-number {
+            font-size: 2rem !important;
+          }
+          .how-it-works-card-title {
+            font-size: 1.15rem !important;
+            margin-bottom: 0.5rem !important;
+          }
+          .how-it-works-card-desc {
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
           }
         }
       `}</style>

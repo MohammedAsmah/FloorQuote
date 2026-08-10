@@ -19,7 +19,7 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
   const progress = (current / total) * 100;
 
   return (
-    <div 
+    <div
       className="sticky top-0 z-50 border-b"
       style={{
         background: colors.background.glass,
@@ -29,22 +29,18 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
         boxShadow: shadows.sm,
       }}
     >
-      <div style={{ position: "relative" }}>
-        {/* Top-left exit link placed inside the same sticky bar but aligned to the viewport left */}
-        <div style={{ position: "absolute", left: 12, top: 12, zIndex: 60 }}>
-          <Link
-            href="/"
-            aria-label="Return to FloorQuote home"
-            className="inline-flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            style={{ color: colors.text.secondary }}
-          >
-            <ArrowLeft size={16} />
-            <span>FloorQuote</span>
-          </Link>
-        </div>
-
-        <div className="max-w-3xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between mb-3 gap-3">
+      <div className="max-w-3xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-between mb-3 gap-3">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              aria-label="Return to FloorQuote home"
+              className="inline-flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              style={{ color: colors.text.secondary }}
+            >
+              <ArrowLeft size={16} />
+              <span>FloorQuote</span>
+            </Link>
             <motion.span
               className="text-sm font-medium"
               style={{ color: colors.text.secondary }}
@@ -54,32 +50,32 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
             >
               Question {current} of {total}
             </motion.span>
-            <motion.span
-              className="text-sm font-semibold"
-              style={{ color: colors.accent.blue }}
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              key={`percent-${current}`}
-            >
-              {Math.round(progress)}%
-            </motion.span>
           </div>
-          <div
-            className="h-2.5 rounded-full overflow-hidden"
-            style={{ backgroundColor: colors.progress.inactive, borderRadius: borderRadius.lg }}
+          <motion.span
+            className="text-sm font-semibold"
+            style={{ color: colors.accent.blue }}
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            key={`percent-${current}`}
           >
-            <motion.div
-              className="h-full rounded-full"
-              style={{
-                background: colors.gradients.blue,
-                borderRadius: borderRadius.lg,
-                boxShadow: shadows.glowBlue,
-              }}
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            />
-          </div>
+            {Math.round(progress)}%
+          </motion.span>
+        </div>
+        <div
+          className="h-2.5 rounded-full overflow-hidden"
+          style={{ backgroundColor: colors.progress.inactive, borderRadius: borderRadius.lg }}
+        >
+          <motion.div
+            className="h-full rounded-full"
+            style={{
+              background: colors.gradients.blue,
+              borderRadius: borderRadius.lg,
+              boxShadow: shadows.glowBlue,
+            }}
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
         </div>
       </div>
     </div>

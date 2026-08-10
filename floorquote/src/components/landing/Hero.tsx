@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { colors, shadows, transitions, typography } from '@/src/lib/design-system';
+import { colors, shadows, transitions } from '@/src/lib/design-system';
 
 export function Hero() {
   const trustIndicators = [
@@ -14,6 +14,7 @@ export function Hero() {
 
   return (
     <section
+      className="hero-section"
       style={{
         backgroundColor: colors.background.primary,
         paddingTop: '8rem',
@@ -40,10 +41,11 @@ export function Hero() {
         animate="visible"
         style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', position: 'relative' }}
       >
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+        <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
           {/* Left Content */}
           <motion.div>
             <motion.h1
+              className="hero-title"
               style={{
                 fontSize: '3.5rem',
                 fontWeight: '700',
@@ -57,7 +59,7 @@ export function Hero() {
             </motion.h1>
 
             <motion.p
-              
+              className="hero-subtitle"
               style={{
                 fontSize: '1.25rem',
                 lineHeight: '1.6',
@@ -70,7 +72,7 @@ export function Hero() {
             </motion.p>
 
             <motion.div
-              
+              className="hero-buttons"
               style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}
             >
               <Link href="/calculator">
@@ -120,7 +122,7 @@ export function Hero() {
 
             {/* Trust Indicators */}
             <motion.div
-              
+              className="hero-trust"
               style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}
             >
               {trustIndicators.map((indicator, index) => (
@@ -142,7 +144,7 @@ export function Hero() {
 
           {/* Right Content - Hero Image */}
           <motion.div
-            
+            className="hero-image"
             style={{ position: 'relative' }}
           >
             <motion.div
@@ -154,6 +156,7 @@ export function Hero() {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
+              className="hero-image-inner"
               style={{
                 position: 'relative',
                 borderRadius: '1.5rem',
@@ -163,6 +166,7 @@ export function Hero() {
               }}
             >
               <div
+                className="hero-image-bg"
                 style={{
                   width: '100%',
                   height: '500px',
@@ -185,6 +189,7 @@ export function Hero() {
                   }}
                 />
                 <div
+                  className="hero-image-text"
                   style={{
                     fontSize: '6rem',
                     fontWeight: '700',
@@ -208,6 +213,7 @@ export function Hero() {
                 ease: 'easeInOut',
                 delay: 1,
               }}
+              className="hero-floating-card"
               style={{
                 position: 'absolute',
                 bottom: '-2rem',
@@ -249,21 +255,82 @@ export function Hero() {
 
       <style jsx global>{`
         @media (max-width: 1024px) {
-          section div:first-child > div {
-            grid-template-columns: 1fr;
-            gap: 3rem;
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
           }
-          section h1 {
+          .hero-title {
             font-size: 2.5rem !important;
           }
         }
+        @media (max-width: 768px) {
+          .hero-section {
+            padding-top: 5rem !important;
+            padding-bottom: 3rem !important;
+          }
+          .hero-title {
+            font-size: 2.25rem !important;
+          }
+          .hero-subtitle {
+            font-size: 1.125rem !important;
+          }
+          .hero-image-bg {
+            height: 350px !important;
+          }
+          .hero-image-text {
+            font-size: 3.5rem !important;
+          }
+          .hero-floating-card {
+            bottom: -1.5rem !important;
+            left: -1rem !important;
+            max-width: 240px !important;
+            padding: 1.25rem !important;
+          }
+        }
         @media (max-width: 640px) {
-          section h1 {
+          .hero-section {
+            padding-top: 4rem !important;
+            padding-bottom: 2.5rem !important;
+          }
+          .hero-title {
             font-size: 2rem !important;
           }
-          section div > div > div:first-child > div > div {
-            flex-direction: column;
-            gap: 1rem;
+          .hero-buttons {
+            flex-direction: column !important;
+            gap: 0.75rem !important;
+          }
+          .hero-buttons > a > button {
+            width: 100% !important;
+          }
+          .hero-trust {
+            gap: 1rem !important;
+          }
+          .hero-image-bg {
+            height: 300px !important;
+          }
+          .hero-image-text {
+            font-size: 2.5rem !important;
+          }
+          .hero-floating-card {
+            bottom: -1rem !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            max-width: 260px !important;
+          }
+        }
+        @media (max-width: 390px) {
+          .hero-section {
+            padding-top: 3rem !important;
+          }
+          .hero-title {
+            font-size: 1.75rem !important;
+          }
+          .hero-image-bg {
+            height: 260px !important;
+          }
+          .hero-image-text {
+            font-size: 2rem !important;
           }
         }
       `}</style>

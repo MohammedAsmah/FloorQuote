@@ -8,6 +8,7 @@ import { colors, shadows, transitions } from '@/src/lib/design-system';
 export function FinalCTA() {
   return (
     <section
+      className="final-cta"
       style={{
         backgroundColor: colors.background.primary,
         padding: '6rem 0',
@@ -54,6 +55,7 @@ export function FinalCTA() {
         >
           {/* Decorative elements */}
           <div
+            className="decorative-circle top-right"
             style={{
               position: 'absolute',
               top: '-100px',
@@ -66,6 +68,7 @@ export function FinalCTA() {
             }}
           />
           <div
+            className="decorative-circle bottom-left"
             style={{
               position: 'absolute',
               bottom: '-100px',
@@ -81,6 +84,7 @@ export function FinalCTA() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             {/* Badge */}
             <motion.div
+              className="cta-badge"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -103,6 +107,7 @@ export function FinalCTA() {
             </motion.div>
 
             <motion.h2
+              className="cta-h2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -120,6 +125,7 @@ export function FinalCTA() {
             </motion.h2>
 
             <motion.p
+              className="cta-p"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -149,6 +155,7 @@ export function FinalCTA() {
             >
               <Link href="/calculator">
                 <motion.button
+                  className="cta-button"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={{
@@ -173,6 +180,7 @@ export function FinalCTA() {
               </Link>
               <Link href="/quotes">
                 <motion.button
+                  className="cta-button-secondary"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={{

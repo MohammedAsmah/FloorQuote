@@ -40,17 +40,25 @@ export function TrustSection() {
 
   return (
     <section
+      className="trust-section"
       style={{
         backgroundColor: colors.background.card,
         padding: '6rem 0',
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
-        style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}
+        style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '0 1.5rem',
+          width: '100%',
+          boxSizing: 'border-box',
+        }}
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -83,10 +91,13 @@ export function TrustSection() {
         </motion.div>
 
         <motion.div
+          className="trust-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
             gap: '2rem',
+            width: '100%',
+            boxSizing: 'border-box',
           }}
         >
           {trustCards.map((card, index) => (
@@ -101,6 +112,8 @@ export function TrustSection() {
                 boxShadow: shadows.sm,
                 border: `1px solid ${colors.border.default}`,
                 transition: `box-shadow ${transitions.normal}, transform ${transitions.normal}`,
+                width: '100%',
+                boxSizing: 'border-box',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow = shadows.lg;
@@ -149,8 +162,8 @@ export function TrustSection() {
 
       <style jsx global>{`
         @media (max-width: 640px) {
-          section > div > div:last-child {
-            grid-template-columns: 1fr;
+          .trust-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

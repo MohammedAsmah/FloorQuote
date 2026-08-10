@@ -8,6 +8,7 @@ import { colors, shadows, transitions } from '@/src/lib/design-system';
 export function CalculatorPreview() {
   return (
     <section
+      className="calculator-preview"
       style={{
         backgroundColor: colors.background.primary,
         padding: '6rem 0',
@@ -50,9 +51,10 @@ export function CalculatorPreview() {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+        <div className="calculator-layout-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
           {/* Calculator Preview */}
           <motion.div
+            className="calculator-card"
             style={{
               backgroundColor: colors.background.card,
               borderRadius: '1.5rem',
@@ -63,6 +65,7 @@ export function CalculatorPreview() {
           >
             {/* Calculator Header */}
             <div
+              className="calculator-header"
               style={{
                 padding: '1.5rem',
                 borderBottom: `1px solid ${colors.border.default}`,
@@ -71,14 +74,15 @@ export function CalculatorPreview() {
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: '600', color: colors.text.primary }}>
+                  <div className="calculator-header-title" style={{ fontSize: '1.25rem', fontWeight: '600', color: colors.text.primary }}>
                     Garage Floor Calculator
                   </div>
-                  <div style={{ fontSize: '0.875rem', color: colors.text.secondary }}>
+                  <div className="calculator-header-step" style={{ fontSize: '0.875rem', color: colors.text.secondary }}>
                     Step 1 of 6
                   </div>
                 </div>
                 <div
+                  className="calculator-header-badge"
                   style={{
                     width: '40px',
                     height: '40px',
@@ -89,6 +93,7 @@ export function CalculatorPreview() {
                     justifyContent: 'center',
                     color: 'white',
                     fontWeight: '600',
+                    flexShrink: 0,
                   }}
                 >
                   1
@@ -116,20 +121,21 @@ export function CalculatorPreview() {
             </div>
 
             {/* Calculator Content */}
-            <div style={{ padding: '2rem' }}>
-              <div style={{ marginBottom: '1.5rem' }}>
-                <h3 style={{ fontSize: '1.125rem', fontWeight: '600', color: colors.text.primary, marginBottom: '0.5rem' }}>What's your garage size?
+            <div className="calculator-content" style={{ padding: '2rem' }}>
+              <div className="calculator-question" style={{ marginBottom: '1.5rem' }}>
+                <h3 className="calculator-question-title" style={{ fontSize: '1.125rem', fontWeight: '600', color: colors.text.primary, marginBottom: '0.5rem' }}>What's your garage size?
                 </h3>
-                <p style={{ fontSize: '0.9375rem', color: colors.text.secondary }}>
+                <p className="calculator-question-desc" style={{ fontSize: '0.9375rem', color: colors.text.secondary }}>
                   Select the size that best matches your garage
                 </p>
               </div>
 
               {/* Size Options */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div className="size-options-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
                 {['1-Car', '2-Car', '3-Car', '4+ Car'].map((size, index) => (
                   <motion.div
                     key={size}
+                    className="size-option"
                     whileHover={{ scale: 1.02 }}
                     style={{
                       padding: '1rem',
@@ -146,7 +152,7 @@ export function CalculatorPreview() {
                       e.currentTarget.style.borderColor = colors.border.default;
                     }}
                   >
-                    <div style={{ fontSize: '1rem', fontWeight: '500', color: colors.text.primary }}>
+                    <div className="size-option-label" style={{ fontSize: '1rem', fontWeight: '500', color: colors.text.primary }}>
                       {size}
                     </div>
                   </motion.div>
@@ -155,6 +161,7 @@ export function CalculatorPreview() {
 
               {/* Blurred next questions */}
               <div
+                className="blurred-question"
                 style={{
                   padding: '1.5rem',
                   backgroundColor: colors.background.primary,
@@ -170,10 +177,11 @@ export function CalculatorPreview() {
                     Current floor condition?
                   </div>
                 </div>
-                <div style={{ height: '40px', backgroundColor: colors.border.subtle, borderRadius: '0.5rem' }} />
+                <div className="blurred-question-placeholder" style={{ height: '40px', backgroundColor: colors.border.subtle, borderRadius: '0.5rem' }} />
               </div>
 
               <div
+                className="blurred-question blurred-question-second"
                 style={{
                   padding: '1.5rem',
                   backgroundColor: colors.background.primary,
@@ -188,12 +196,13 @@ export function CalculatorPreview() {
                     Desired coating type?
                   </div>
                 </div>
-                <div style={{ height: '40px', backgroundColor: colors.border.subtle, borderRadius: '0.5rem' }} />
+                <div className="blurred-question-placeholder" style={{ height: '40px', backgroundColor: colors.border.subtle, borderRadius: '0.5rem' }} />
               </div>
             </div>
 
             {/* Calculator Footer */}
             <Link href="/calculator"
+              className="calculator-footer"
               style={{
                 padding: '1.5rem',
                 borderTop: `1px solid ${colors.border.default}`,
@@ -325,17 +334,80 @@ export function CalculatorPreview() {
 
       <style jsx global>{`
         @media (max-width: 1024px) {
-          section > div > div:last-child {
-            grid-template-columns: 1fr;
-            gap: 3rem;
+          .calculator-layout-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
           }
         }
         @media (max-width: 640px) {
           section h2 {
             font-size: 2rem !important;
           }
-          section > div > div > div > div > div {
-            grid-template-columns: 1fr;
+
+          /* Card shell */
+          .calculator-card {
+            border-radius: 1.1rem !important;
+          }
+
+          /* Header */
+          .calculator-header {
+            padding: 1rem !important;
+          }
+          .calculator-header-title {
+            font-size: 1rem !important;
+          }
+          .calculator-header-step {
+            font-size: 0.75rem !important;
+          }
+          .calculator-header-badge {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 0.875rem !important;
+          }
+
+          /* Content */
+          .calculator-content {
+            padding: 1.1rem !important;
+          }
+          .calculator-question {
+            margin-bottom: 1rem !important;
+          }
+          .calculator-question-title {
+            font-size: 1rem !important;
+            margin-bottom: 0.25rem !important;
+          }
+          .calculator-question-desc {
+            font-size: 0.8125rem !important;
+          }
+
+          /* Size options */
+          .size-options-grid {
+            gap: 0.625rem !important;
+            margin-bottom: 1rem !important;
+          }
+          .size-option {
+            padding: 0.625rem !important;
+            border-radius: 0.5rem !important;
+          }
+          .size-option-label {
+            font-size: 0.875rem !important;
+          }
+
+          /* Blurred preview questions: shrink, and drop the second one to save height */
+          .blurred-question {
+            padding: 0.875rem !important;
+            margin-bottom: 0.75rem !important;
+          }
+          .blurred-question-placeholder {
+            height: 28px !important;
+          }
+          .blurred-question-second {
+            display: none !important;
+          }
+
+          /* Footer */
+          .calculator-footer {
+            padding: 1rem !important;
           }
         }
       `}</style>
