@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,6 +44,12 @@ export function QuoteRequestForm() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [referenceNumber, setReferenceNumber] = useState<string>("");
   const [serverError, setServerError] = useState<string | null>(null);
+
+  const formTopRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTop = () => {
+    formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const {
     register,
@@ -103,12 +109,14 @@ export function QuoteRequestForm() {
 
     if (isValid && currentStep < 5) {
       setCurrentStep((prev) => prev + 1);
+      scrollToTop();
     }
   };
 
   const handlePrevStep = () => {
     if (currentStep > 1) {
       setCurrentStep((prev) => prev - 1);
+      scrollToTop();
     }
   };
 
@@ -293,6 +301,7 @@ export function QuoteRequestForm() {
         ) : (
           /* MULTI-STEP FORM CARD */
           <div
+            ref={formTopRef}
             style={{
               backgroundColor: colors.background.card,
               borderRadius: "1.5rem",
