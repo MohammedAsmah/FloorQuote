@@ -142,15 +142,18 @@ export function QuoteRequestForm() {
             `FQ-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`
         );
         setSubmitStatus("success");
+        scrollToTop();
       } else {
         setServerError(resData.error || "Failed to submit request.");
         setSubmitStatus("error");
+        scrollToTop();
       }
     } catch {
       // Fallback success code so user lead request is captured seamlessly
       const fallbackRef = `FQ-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
       setReferenceNumber(fallbackRef);
       setSubmitStatus("success");
+      scrollToTop();
     } finally {
       setIsSubmitting(false);
     }
@@ -179,6 +182,8 @@ export function QuoteRequestForm() {
       />
 
       <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 1.5rem", position: "relative" }}>
+        {/* Scroll anchor — always in the DOM */}
+        <div ref={formTopRef} />
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <motion.div
@@ -301,7 +306,6 @@ export function QuoteRequestForm() {
         ) : (
           /* MULTI-STEP FORM CARD */
           <div
-            ref={formTopRef}
             style={{
               backgroundColor: colors.background.card,
               borderRadius: "1.5rem",
