@@ -8,7 +8,9 @@
 
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 import { ResultHeader } from "../result/ResultHeader";
 import { EstimateCard } from "../result/EstimateCard";
 import { RecommendationCard } from "../result/RecommendationCard";
@@ -67,6 +69,17 @@ export function ResultPage({ result, input, onRestart, onGetQuotes, isLeadModalO
       style={{ background: colors.gradients.background }}
     >
       <div className="max-w-4xl mx-auto">
+        {/* Home link */}
+        <div className="mb-6">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-600 transition-colors"
+          >
+            <ArrowLeft size={14} />
+            Back to home
+          </Link>
+        </div>
+
         <ResultHeader
           estimatedLow={result.estimatedLow}
           estimatedHigh={result.estimatedHigh}
