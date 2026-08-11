@@ -9,13 +9,13 @@ export function ContactInfo() {
     {
       icon: Mail,
       label: 'Email',
-      value: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@floorquote.ca',
-      href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@floorquote.ca'}`,
+      value: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@floorquoteconnect.com',
+      href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@floorquoteconnect.com'}`,
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Calgary, Alberta, Canada',
+      value: 'Serving Calgary, Alberta',
       href: null,
     },
     {

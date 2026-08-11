@@ -189,13 +189,13 @@ export function Footer() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Mail size={20} color={colors.text.secondary} />
             <span style={{ fontSize: '0.9375rem', color: colors.text.secondary }}>
-              hello@floorquote.ca
+              hello@floorquoteconnect.com
             </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <MapPin size={20} color={colors.text.secondary} />
             <span style={{ fontSize: '0.9375rem', color: colors.text.secondary }}>
-              Calgary, Alberta
+              Serving Calgary, Alberta
             </span>
           </div>
         </motion.div>
