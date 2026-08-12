@@ -248,25 +248,6 @@ export function Navigation() {
         )}
       </AnimatePresence>
 
-      <style jsx global>{`
-        @media (min-width: 1024px) {
-          .desktop-nav {
-            display: flex !important;
-          }
-          .desktop-ctas {
-            display: flex !important;
-          }
-          .mobile-menu-btn {
-            display: none !important;
-          }
-        }
-        @media (max-width: 639px) {
-          .nav-logo {
-            width: 120px !important;
-            height: 30px !important;
-          }
-        }
-      `}</style>
     </motion.nav>
   );
 }
