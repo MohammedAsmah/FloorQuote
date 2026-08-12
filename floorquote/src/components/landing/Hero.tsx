@@ -34,9 +34,7 @@ export function Hero() {
         }}
       />
 
-      <motion.div
-        initial="hidden"
-        animate="visible"
+      <div
         style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', position: 'relative' }}
       >
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
@@ -249,7 +247,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       <style jsx global>{`
         @media (max-width: 1024px) {
