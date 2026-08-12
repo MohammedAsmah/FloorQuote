@@ -17,8 +17,6 @@ export function Hero() {
       className="hero-section"
       style={{
         backgroundColor: colors.background.primary,
-        paddingTop: '8rem',
-        paddingBottom: '5rem',
         position: 'relative',
         overflow: 'hidden',
       }}

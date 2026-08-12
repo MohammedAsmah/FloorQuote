@@ -94,6 +94,7 @@ export function CoatingTypes() {
         </motion.div>
 
         <motion.div
+          className="coating-types-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -215,11 +216,11 @@ export function CoatingTypes() {
 
       <style jsx global>{`
         @media (max-width: 640px) {
-          section > div > div:last-child {
-            grid-template-columns: 1fr;
-          }
-          section h2 {
-            font-size: 2rem !important;
+          .coating-types-grid {
+            grid-template-columns: 1fr !important;
+            max-width: 420px;
+            margin-left: auto !important;
+            margin-right: auto !important;
           }
         }
       `}</style>
