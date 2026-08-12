@@ -178,7 +178,7 @@ export function CoatingTypes() {
                     style={{
                       fontSize: '0.75rem',
                       fontWeight: '600',
-                      color: colors.text.muted,
+                      color: '#64748B',
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
                       marginBottom: '0.25rem',
@@ -196,7 +196,7 @@ export function CoatingTypes() {
                     style={{
                       fontSize: '0.75rem',
                       fontWeight: '600',
-                      color: colors.text.muted,
+                      color: '#64748B',
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
                       marginBottom: '0.25rem',

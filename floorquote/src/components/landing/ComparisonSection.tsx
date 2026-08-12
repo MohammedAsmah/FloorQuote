@@ -96,7 +96,7 @@ export function ComparisonSection() {
               >
                 Traditional Process
               </h3>
-              <p style={{ fontSize: '0.9375rem', color: colors.text.muted }}>
+              <p style={{ fontSize: '0.9375rem', color: '#64748B' }}>
                 The old way of getting garage floor quotes
               </p>
             </div>

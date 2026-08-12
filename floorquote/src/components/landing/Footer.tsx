@@ -90,7 +90,7 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
           >
-            <h4
+            <p
               style={{
                 fontSize: '0.875rem',
                 fontWeight: '600',
@@ -101,7 +101,7 @@ export function Footer() {
               }}
             >
               FloorQuote
-            </h4>
+            </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {footerLinks.floorquote.map((link) => (
                 <li key={link.name} style={{ marginBottom: '0.75rem' }}>
@@ -134,7 +134,7 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <h4
+            <p
               style={{
                 fontSize: '0.875rem',
                 fontWeight: '600',
@@ -145,7 +145,7 @@ export function Footer() {
               }}
             >
               Company
-            </h4>
+            </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {footerLinks.company.map((link) => (
                 <li key={link.name} style={{ marginBottom: '0.75rem' }}>

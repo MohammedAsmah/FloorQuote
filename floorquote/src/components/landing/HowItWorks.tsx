@@ -142,7 +142,7 @@ export function HowItWorks() {
                       style={{
                         fontSize: '3rem',
                         fontWeight: '700',
-                        color: 'rgba(37, 99, 235, 0.15)',
+                        color: '#BFDBFE',
                         lineHeight: '1',
                       }}
                     >
