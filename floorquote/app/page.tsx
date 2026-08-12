@@ -14,9 +14,9 @@ import { StructuredData } from '@/components/landing/StructuredData';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'FloorQuote - Free Garage Floor Coating Cost Estimator | Calgary',
+  title: 'FloorQuote - Calgary Garage Floor Coating Cost Estimator',
   description:
-    'Get instant, accurate garage floor coating estimates using Calgary market pricing. Compare quotes from trusted local contractors. Free, no obligation estimates in under 2 minutes.',
+    'Get a fast, accurate garage floor coating cost estimate for your Calgary garage using local market pricing.',
   keywords:
     'garage floor coating, epoxy flooring Calgary, garage floor cost estimator, polyaspartic coating, concrete coating Calgary, garage floor quotes',
   authors: [{ name: 'FloorQuote' }],
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'FloorQuote - Free Garage Floor Coating Cost Estimator | Calgary',
+    title: 'FloorQuote - Calgary Garage Floor Coating Cost Estimator',
     description:
-      'Get instant, accurate garage floor coating estimates using Calgary market pricing. Compare quotes from trusted local contractors.',
+      'Get a fast, accurate garage floor coating cost estimate for your Calgary garage using local market pricing.',
     url: 'https://www.floorquoteconnect.com',
     siteName: 'FloorQuote',
     locale: 'en_CA',
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FloorQuote - Free Garage Floor Coating Cost Estimator | Calgary',
+    title: 'FloorQuote - Calgary Garage Floor Coating Cost Estimator',
     description:
-      'Get instant, accurate garage floor coating estimates using Calgary market pricing.',
+      'Get a fast, accurate garage floor coating cost estimate for your Calgary garage using local market pricing.',
     images: ['/floorquote-icon.png'],
   },
   robots: {
