@@ -5,11 +5,16 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Request Garage Floor Quotes | FloorQuote',
-  description: 'Request quotes from trusted local flooring professionals for your garage floor coating project.',
+  description:
+    'Request quotes from trusted local flooring professionals for your garage floor coating project in Calgary.',
+  alternates: {
+    canonical: '/quotes',
+  },
   openGraph: {
     title: 'Request Garage Floor Quotes | FloorQuote',
-    description: 'Request quotes from trusted local flooring professionals for your garage floor coating project.',
-    url: 'https://floorquote.ca/quotes',
+    description:
+      'Request quotes from trusted local flooring professionals for your garage floor coating project in Calgary.',
+    url: 'https://www.floorquoteconnect.com/quotes',
     type: 'website',
   },
 };

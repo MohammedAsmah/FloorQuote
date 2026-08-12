@@ -15,21 +15,37 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'FloorQuote - Free Garage Floor Coating Cost Estimator | Calgary',
-  description: 'Get instant, accurate garage floor coating estimates using Calgary market pricing. Compare quotes from trusted local contractors. Free, no obligation estimates in under 2 minutes.',
-  keywords: 'garage floor coating, epoxy flooring Calgary, garage floor cost estimator, polyaspartic coating, concrete coating Calgary, garage floor quotes',
+  description:
+    'Get instant, accurate garage floor coating estimates using Calgary market pricing. Compare quotes from trusted local contractors. Free, no obligation estimates in under 2 minutes.',
+  keywords:
+    'garage floor coating, epoxy flooring Calgary, garage floor cost estimator, polyaspartic coating, concrete coating Calgary, garage floor quotes',
   authors: [{ name: 'FloorQuote' }],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'FloorQuote - Free Garage Floor Coating Cost Estimator | Calgary',
-    description: 'Get instant, accurate garage floor coating estimates using Calgary market pricing. Compare quotes from trusted local contractors.',
-    url: 'https://floorquote.ca',
+    description:
+      'Get instant, accurate garage floor coating estimates using Calgary market pricing. Compare quotes from trusted local contractors.',
+    url: 'https://www.floorquoteconnect.com',
     siteName: 'FloorQuote',
     locale: 'en_CA',
     type: 'website',
+    images: [
+      {
+        url: '/floorquote-icon.png',
+        width: 512,
+        height: 512,
+        alt: 'FloorQuote - Garage Floor Coating Estimator',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'FloorQuote - Free Garage Floor Coating Cost Estimator | Calgary',
-    description: 'Get instant, accurate garage floor coating estimates using Calgary market pricing.',
+    description:
+      'Get instant, accurate garage floor coating estimates using Calgary market pricing.',
+    images: ['/floorquote-icon.png'],
   },
   robots: {
     index: true,
@@ -41,9 +57,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code',
   },
 };
 

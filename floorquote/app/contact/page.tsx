@@ -7,11 +7,16 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact FloorQuote | Garage Floor Estimates',
-  description: 'Contact FloorQuote with questions about garage floor estimates, the calculator, or requesting quotes in Calgary.',
+  description:
+    'Contact FloorQuote with questions about garage floor estimates, the calculator, or requesting quotes in Calgary.',
+  alternates: {
+    canonical: '/contact',
+  },
   openGraph: {
     title: 'Contact FloorQuote | Garage Floor Estimates',
-    description: 'Contact FloorQuote with questions about garage floor estimates, the calculator, or requesting quotes in Calgary.',
-    url: 'https://floorquote.ca/contact',
+    description:
+      'Contact FloorQuote with questions about garage floor estimates, the calculator, or requesting quotes in Calgary.',
+    url: 'https://www.floorquoteconnect.com/contact',
     type: 'website',
   },
 };

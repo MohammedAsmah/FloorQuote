@@ -3,11 +3,16 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Garage Floor Coating Calculator | FloorQuote',
-  description: 'Get instant, accurate garage floor coating estimates using our free calculator. Based on Calgary market pricing.',
+  description:
+    'Get instant, accurate garage floor coating estimates using our free calculator. Based on Calgary market pricing.',
+  alternates: {
+    canonical: '/calculator',
+  },
   openGraph: {
     title: 'Garage Floor Coating Calculator | FloorQuote',
-    description: 'Get instant, accurate garage floor coating estimates using our free calculator.',
-    url: 'https://floorquote.ca/calculator',
+    description:
+      'Get instant, accurate garage floor coating estimates using our free calculator.',
+    url: 'https://www.floorquoteconnect.com/calculator',
     type: 'website',
   },
 };

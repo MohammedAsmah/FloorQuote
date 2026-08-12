@@ -11,11 +11,16 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About FloorQuote | Garage Floor Estimates in Calgary',
-  description: 'Learn how FloorQuote helps Calgary homeowners understand garage floor coating costs and connect with local flooring professionals.',
+  description:
+    'Learn how FloorQuote helps Calgary homeowners understand garage floor coating costs and connect with local flooring professionals.',
+  alternates: {
+    canonical: '/about',
+  },
   openGraph: {
     title: 'About FloorQuote | Garage Floor Estimates in Calgary',
-    description: 'Learn how FloorQuote helps Calgary homeowners understand garage floor coating costs and connect with local flooring professionals.',
-    url: 'https://floorquote.ca/about',
+    description:
+      'Learn how FloorQuote helps Calgary homeowners understand garage floor coating costs and connect with local flooring professionals.',
+    url: 'https://www.floorquoteconnect.com/about',
     type: 'website',
   },
 };

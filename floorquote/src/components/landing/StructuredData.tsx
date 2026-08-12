@@ -4,7 +4,7 @@ export function StructuredData() {
     '@type': 'WebApplication',
     name: 'FloorQuote',
     description: 'Intelligent garage floor coating cost estimator and contractor matching platform',
-    url: 'https://floorquote.ca',
+    url: 'https://www.floorquoteconnect.com',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
     offers: {
