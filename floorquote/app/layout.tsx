@@ -22,6 +22,18 @@ export const metadata: Metadata = {
     siteName: "FloorQuote",
     locale: "en_CA",
     type: "website",
+    images: [
+      {
+        url: "/floorquote-icon.png",
+        width: 512,
+        height: 512,
+        alt: "FloorQuote - Garage Floor Coating Estimator",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/floorquote-icon.png"],
   },
 };
 

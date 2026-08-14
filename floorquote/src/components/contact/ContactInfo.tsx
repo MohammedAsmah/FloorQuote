@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 import { colors, shadows, transitions } from '@/src/lib/design-system';
 
 export function ContactInfo() {
@@ -17,12 +17,6 @@ export function ContactInfo() {
       label: 'Location',
       value: 'Serving Calgary, Alberta',
       href: null,
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: process.env.NEXT_PUBLIC_CONTACT_PHONE || '(403) 555-0123',
-      href: `tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE || '4035550123'}`,
     },
   ];
 

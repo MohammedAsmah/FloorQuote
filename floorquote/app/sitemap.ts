@@ -17,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE}/calgary-garage-flooring`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE}/quotes`,
       lastModified: new Date(),
       changeFrequency: "monthly",

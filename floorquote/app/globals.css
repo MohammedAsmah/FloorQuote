@@ -420,3 +420,165 @@ html, body {
     padding: 3rem 0 1.5rem !important;
   }
 }
+
+/* =============================================================================
+   Calgary Garage Flooring Page
+   Styles for /calgary-garage-flooring. Shared by the page's section
+   components. Additive only — no changes to existing page styling.
+   ============================================================================= */
+
+/* Hero (fixed navigation offset) */
+.calgary-hero {
+  padding-top: 8.5rem;
+  padding-bottom: 5rem;
+}
+
+/* Generic section shell */
+.calgary-section {
+  padding: 6rem 0;
+}
+
+/* Section headings */
+.calgary-h2 {
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Cards: subtle hover lift via CSS only (no JS required) */
+.calgary-card {
+  transition: box-shadow 250ms ease-in-out, transform 250ms ease-in-out;
+}
+
+.calgary-card:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transform: translateY(-4px);
+}
+
+/* Grids */
+.calgary-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.calgary-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+/* Process steps */
+.calgary-process-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Buttons (styled links — no client JS) */
+.calgary-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgb(59 130 246 / 0.3);
+  transition: background-color 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.calgary-btn-primary:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.calgary-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.calgary-btn-secondary:hover {
+  background-color: rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Comparison table wrapper for small screens */
+.calgary-table-scroll {
+  overflow-x: auto;
+}
+
+.calgary-table-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calgary-faq-answer p {
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .calgary-hero {
+    padding-top: 7rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+  .calgary-section {
+    padding: 5rem 0 !important;
+  }
+  .calgary-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .calgary-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .calgary-process-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .calgary-hero {
+    padding-top: 6rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .calgary-section {
+    padding: 4rem 0 !important;
+  }
+  .calgary-h2 {
+    font-size: 2rem !important;
+  }
+  .calgary-hero-h1 {
+    font-size: 2.25rem !important;
+  }
+  .calgary-hero-sub {
+    font-size: 1.125rem !important;
+  }
+  .calgary-hero-buttons {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  .calgary-hero-buttons a {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .calgary-hero-h1 {
+    font-size: 1.9rem !important;
+  }
+}
