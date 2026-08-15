@@ -1,46 +1,26 @@
-import { colors, shadows } from '@/lib/design-system';
+import { colors } from '@/lib/design-system';
 
 export function ProcessSection() {
   const steps = [
     {
-      title: 'Inspection',
+      title: 'Inspect & prepare',
       description:
-        'The installer checks the concrete: condition, cracks, stains, moisture, and any existing coatings.',
+        'The installer checks the concrete\u2019s condition and mechanically grinds or profiles the slab so the coating can bond. Preparation is where a coating is won or lost.',
     },
     {
-      title: 'Surface preparation',
+      title: 'Repair & clean',
       description:
-        'The floor is mechanically ground or profiled so the coating can bond. This is the most important step in the project.',
+        'Cracks are filled or patched, then dust and debris from grinding are removed so the next layers go down clean.',
     },
     {
-      title: 'Concrete repairs',
+      title: 'Apply the coating system',
       description:
-        'Cracks are filled, patched, or injected where needed before anything is applied.',
+        'Primer or base coat, the decorative layer (flakes, metallic, or quartz) if you\u2019ve chosen one, and a protective topcoat \u2014 each given time to cure.',
     },
     {
-      title: 'Cleaning',
+      title: 'Finish & inspect',
       description:
-        'Dust and debris from grinding are removed so the next layers go down clean.',
-    },
-    {
-      title: 'Primer or base system',
-      description:
-        'Where the system calls for it, a primer or base coat is applied first to anchor the finish.',
-    },
-    {
-      title: 'Decorative layer',
-      description:
-        'If you\u2019ve chosen flakes, metallic, or quartz, this is where the design goes in.',
-    },
-    {
-      title: 'Topcoat',
-      description:
-        'A protective topcoat is applied and given time to cure.',
-    },
-    {
-      title: 'Final inspection',
-      description:
-        'The installer checks coverage, texture, and edges before calling the job complete.',
+        'The installer checks coverage, texture, and edges before the garage is handed back.',
     },
   ];
 
@@ -72,18 +52,17 @@ export function ProcessSection() {
             marginBottom: '3rem',
           }}
         >
-          Every installation is a little different, but most professional garage
-          floor coating projects follow the same general sequence. Knowing the
-          steps helps you ask better questions when you get quotes.
+          Most professional garage floor projects follow the same four stages.
+          Knowing them helps you ask better questions when you get quotes.
         </p>
 
         <ol
           style={{
             listStyle: 'none',
             padding: 0,
-            margin: '0 0 3rem',
+            margin: 0,
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+            gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
             gap: '1.5rem',
             width: '100%',
             boxSizing: 'border-box',
@@ -98,11 +77,8 @@ export function ProcessSection() {
                 backgroundColor: colors.background.card,
                 padding: '1.5rem',
                 borderRadius: '1rem',
-                boxShadow: shadows.sm,
+                boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
                 border: `1px solid ${colors.border.default}`,
-                display: 'flex',
-                gap: '1rem',
-                alignItems: 'flex-start',
                 width: '100%',
                 boxSizing: 'border-box',
               }}
@@ -120,64 +96,34 @@ export function ProcessSection() {
                   fontWeight: '700',
                   fontSize: '1rem',
                   flexShrink: 0,
+                  marginBottom: '1.25rem',
                 }}
               >
                 {index + 1}
               </div>
-              <div>
-                <h3
-                  style={{
-                    fontSize: '1.0625rem',
-                    fontWeight: '600',
-                    color: colors.text.primary,
-                    marginBottom: '0.375rem',
-                  }}
-                >
-                  {step.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: '0.9375rem',
-                    lineHeight: '1.6',
-                    color: colors.text.secondary,
-                    margin: 0,
-                  }}
-                >
-                  {step.description}
-                </p>
-              </div>
+              <h3
+                style={{
+                  fontSize: '1.125rem',
+                  fontWeight: '600',
+                  color: colors.text.primary,
+                  marginBottom: '0.5rem',
+                }}
+              >
+                {step.title}
+              </h3>
+              <p
+                style={{
+                  fontSize: '0.9375rem',
+                  lineHeight: '1.6',
+                  color: colors.text.secondary,
+                  margin: 0,
+                }}
+              >
+                {step.description}
+              </p>
             </li>
           ))}
         </ol>
-
-        <div
-          className="calgary-card"
-          style={{
-            backgroundColor: 'rgba(37, 99, 235, 0.05)',
-            border: `2px solid ${colors.accent.blue}`,
-            borderRadius: '1.5rem',
-            padding: '2rem',
-            maxWidth: '820px',
-          }}
-        >
-          <p
-            style={{
-              fontSize: '1.0625rem',
-              lineHeight: '1.7',
-              color: colors.text.secondary,
-              margin: 0,
-            }}
-          >
-            <strong style={{ color: colors.text.primary }}>
-              Preparation is where a job lives or dies.
-            </strong>{' '}
-            A coating is only as good as the surface beneath it, which is why a
-            detailed quote should always account for how your concrete is
-            prepared — not just the coating itself. Keep in mind that not every
-            system uses every step; fast-cure systems, for example, can shorten
-            the timeline significantly.
-          </p>
-        </div>
       </div>
     </section>
   );

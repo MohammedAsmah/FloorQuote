@@ -1,4 +1,5 @@
-import { Wallet, ShieldCheck, Palette, Car, FlaskConical, Sparkles, Thermometer, Target } from 'lucide-react';
+import { Wallet, ShieldCheck, Palette, FlaskConical, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { colors, shadows } from '@/lib/design-system';
 
 export function ChooseSection() {
@@ -7,11 +8,11 @@ export function ChooseSection() {
       icon: Wallet,
       title: 'Budget',
       description:
-        'What you\u2019re comfortable spending — including preparation, which is often the hidden cost.',
+        'What you\u2019re comfortable spending \u2014 including preparation, which is often the hidden cost.',
     },
     {
       icon: ShieldCheck,
-      title: 'Durability',
+      title: 'Durability & vehicle traffic',
       description:
         'How many vehicles, and how heavy the day-to-day use really is.',
     },
@@ -19,46 +20,14 @@ export function ChooseSection() {
       icon: Palette,
       title: 'Appearance',
       description:
-        'Solid colour, flake, metallic, or something understated.',
-    },
-    {
-      icon: Car,
-      title: 'Vehicle traffic',
-      description:
-        'Daily drivers in and out, or mostly parking.',
+        'Solid colour, flake, or metallic \u2014 how you want the garage to look.',
     },
     {
       icon: FlaskConical,
-      title: 'Chemical resistance',
+      title: 'Climate & chemical resistance',
       description:
-        'Oil changes, lawn equipment, and solvent storage in the garage.',
+        'Winters, road salt, and oil changes \u2014 sealed surfaces handle all three far better than bare concrete.',
     },
-    {
-      icon: Sparkles,
-      title: 'Maintenance',
-      description:
-        'How much effort you want to put into cleaning and care.',
-    },
-    {
-      icon: Thermometer,
-      title: 'Installation conditions',
-      description:
-        'Attached or detached, heated or not, and how much downtime you can tolerate.',
-    },
-    {
-      icon: Target,
-      title: 'Long-term goals',
-      description:
-        'How long you plan to own the home, and whether resale value matters.',
-    },
-  ];
-
-  const questions = [
-    'What surface preparation is included in the quote?',
-    'Which system and how many coats?',
-    'What happens if my concrete has moisture issues?',
-    'What warranty is offered, and what does it cover?',
-    'How long will my garage be out of commission?',
   ];
 
   return (
@@ -89,9 +58,8 @@ export function ChooseSection() {
             marginBottom: '3rem',
           }}
         >
-          Rather than hunting for &ldquo;the best&rdquo; coating, start with what
-          your garage actually needs. Work through these points and the right
-          category usually narrows itself down.
+          Start with what your garage actually needs. Four questions narrow down
+          the right category.
         </p>
 
         <div
@@ -155,69 +123,45 @@ export function ChooseSection() {
           ))}
         </div>
 
-        <p
-          style={{
-            fontSize: '1.125rem',
-            lineHeight: '1.75',
-            color: colors.text.secondary,
-            maxWidth: '820px',
-            marginBottom: '2rem',
-          }}
-        >
-          Two people with the same garage can make different, equally correct
-          choices. The goal is a system that fits your use, your preparation
-          needs, and your budget — not the most expensive option on a brochure.
-        </p>
-
+        {/* Calculator CTA */}
         <div
           className="calgary-card"
           style={{
             backgroundColor: colors.background.card,
-            padding: '2rem',
+            border: `2px solid ${colors.accent.blue}`,
             borderRadius: '1.5rem',
-            boxShadow: shadows.sm,
-            border: `1px solid ${colors.border.default}`,
+            padding: '2.5rem 2rem',
+            textAlign: 'center',
             maxWidth: '820px',
+            margin: '0 auto',
           }}
         >
           <h3
             style={{
-              fontSize: '1.375rem',
-              fontWeight: '600',
+              fontSize: '1.5rem',
+              fontWeight: '700',
               color: colors.text.primary,
-              marginBottom: '1rem',
+              marginBottom: '0.75rem',
             }}
           >
-            Questions worth asking any contractor
+            Not sure which system fits?
           </h3>
-          <ul
+          <p
             style={{
-              listStyle: 'none',
-              padding: 0,
-              margin: 0,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.75rem',
+              fontSize: '1.0625rem',
+              lineHeight: '1.6',
+              color: colors.text.secondary,
+              maxWidth: '620px',
+              margin: '0 auto 1.75rem',
             }}
           >
-            {questions.map((question) => (
-              <li
-                key={question}
-                style={{
-                  display: 'flex',
-                  gap: '0.75rem',
-                  alignItems: 'flex-start',
-                  fontSize: '1rem',
-                  color: colors.text.secondary,
-                }}
-              >
-                <span style={{ color: colors.accent.blue, fontWeight: '700' }}>
-                  •
-                </span>
-                {question}
-              </li>
-            ))}
-          </ul>
+            Use the calculator to compare options for your specific garage, with
+            Calgary market pricing \u2014 before you contact any company.
+          </p>
+          <Link href="/calculator" className="calgary-btn-primary">
+            Estimate Your Options
+            <ArrowRight size={20} />
+          </Link>
         </div>
       </div>
     </section>

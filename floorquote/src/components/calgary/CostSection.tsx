@@ -1,4 +1,4 @@
-import { Ruler, Hammer, Shovel, Layers, Palette, Droplets, Footprints, ClipboardList } from 'lucide-react';
+import { Ruler, Hammer, Shovel, Layers, Palette, Droplets, Footprints, ClipboardList, BadgeCheck } from 'lucide-react';
 import Link from 'next/link';
 import { colors, shadows } from '@/lib/design-system';
 
@@ -52,6 +52,12 @@ export function CostSection() {
       description:
         'Odd layouts, tight clearances, or extra details mean more time on site.',
     },
+    {
+      icon: BadgeCheck,
+      title: 'Product quality and warranty',
+      description:
+        'Higher-grade systems and longer warranties cost more up front but can save money over the life of the floor.',
+    },
   ];
 
   return (
@@ -80,29 +86,13 @@ export function CostSection() {
             lineHeight: '1.75',
             color: colors.text.secondary,
             maxWidth: '820px',
-            marginBottom: '1.25rem',
-          }}
-        >
-          Pricing is where most garage flooring research starts, and it&apos;s
-          also where generic advice gets messy. A number quoted for one Calgary
-          garage can be very different from the quote for the one next door.
-          That&apos;s because coating is priced per square foot against a long
-          list of variables — not as a fixed price per job.
-        </p>
-
-        <p
-          style={{
-            fontSize: '1.125rem',
-            lineHeight: '1.75',
-            color: colors.text.secondary,
-            maxWidth: '820px',
             marginBottom: '3rem',
           }}
         >
-          The honest answer is that any figure you see online is a starting
-          point, not a price. A professional estimate accounts for the specific
-          condition of your concrete and the system you choose. These are the
-          factors that actually move the number:
+          Coating is priced per square foot against a long list of variables —
+          not as a fixed price per job. Any figure you see online is a starting
+          point, not a price. These are the factors that actually move the number
+          for a Calgary garage:
         </p>
 
         <div
@@ -195,9 +185,10 @@ export function CostSection() {
               lineHeight: '1.6',
             }}
           >
-            Our cost calculator uses Calgary market pricing and accounts for your
-            garage size, floor condition, coating type, and more — so you get a
-            range that reflects your project, not a national average.
+          Instead of relying on a generic national average, FloorQuote helps
+          Calgary homeowners estimate their project based on garage size, floor
+          condition, and coating options — so the range you get reflects your
+          garage, not a one-size-fits-all number.
           </p>
           <Link href="/calculator" className="calgary-btn-primary">
             Estimate Your Garage Flooring Cost

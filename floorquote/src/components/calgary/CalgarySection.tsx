@@ -1,43 +1,43 @@
-import { Snowflake, Thermometer, Car, Shovel, Waves, HardHat } from 'lucide-react';
+import { Thermometer, Sun, Home, Building2, HardHat, Warehouse } from 'lucide-react';
 import { colors, shadows } from '@/lib/design-system';
 
 export function CalgarySection() {
   const factors = [
     {
-      icon: Snowflake,
-      title: 'Winter weather and snow',
-      description:
-        'Every winter, cars bring snow, ice, and slush into Calgary garages. Melted water sitting on an unsealed floor can slowly penetrate concrete.',
-    },
-    {
       icon: Thermometer,
       title: 'Freeze-thaw cycles',
       description:
-        'Mild afternoons followed by overnight freezes make concrete expand and contract. That is one reason surface preparation and coating flexibility matter here.',
+        'Calgary swings between mild afternoons and overnight freezes all winter. Concrete expands and contracts each cycle, which is why flexible coating systems and careful prep matter here.',
     },
     {
-      icon: Car,
-      title: 'Road salt and de-icing materials',
+      icon: Sun,
+      title: 'Application timing',
       description:
-        'Salt, sand, and de-icing chemicals get tracked in from city streets. A sealed floor that resists chemicals is much easier to manage in February.',
+        'Most coatings have minimum application and cure temperatures. Installers plan the schedule around the weather — spring, summer, and fall are the typical coating seasons.',
     },
     {
-      icon: Shovel,
-      title: 'Temperature variation',
+      icon: Home,
+      title: 'Heated vs. unheated garages',
       description:
-        'Big temperature swings can affect how coatings cure. Installers plan application around the weather, and attached, heated garages make the job easier.',
+        'Attached, heated garages are easier to coat in winter and give coatings more reliable cure conditions. Detached, unheated garages need more careful planning.',
     },
     {
-      icon: Waves,
-      title: 'Concrete condition',
+      icon: Building2,
+      title: 'Older Calgary slabs',
       description:
-        'Newer slabs prep differently than older, stained, or cracked concrete. The condition of your floor shapes both the cost and the outcome.',
+        'Homes across Calgary have slabs of different ages and conditions. Older concrete can be coated, but it needs extra prep — and that shows up in the quote.',
     },
     {
       icon: HardHat,
       title: 'Surface preparation',
       description:
-        'Grinding or diamond profiling is the difference between a coating that bonds for years and one that peels. It is the step homeowners most often underrate.',
+        'Salt, moisture, and freeze-thaw stress a coating\u2019s bond, so grinding and profiling matter even more here than in milder climates.',
+    },
+    {
+      icon: Warehouse,
+      title: 'Detached garages',
+      description:
+        'Detached garages see bigger temperature swings and more condensation in winter, so moisture control and prep matter even more there.',
     },
   ];
 
@@ -69,14 +69,14 @@ export function CalgarySection() {
             marginBottom: '3rem',
           }}
         >
-          A garage floor in Calgary does not have the same life as one in a
-          milder climate. The conditions that make Calgary&apos;s weather part of
-          everyday conversation are the same ones that matter for a coated floor.
+          A garage floor in Calgary doesn&apos;t have the same life as one in a
+          milder climate. Here&apos;s what&apos;s different about planning and
+          installing a coated floor here.
         </p>
 
         <div
           className="calgary-grid-3"
-          style={{ width: '100%', boxSizing: 'border-box', marginBottom: '3rem' }}
+          style={{ width: '100%', boxSizing: 'border-box' }}
         >
           {factors.map((factor) => (
             <div
@@ -84,7 +84,7 @@ export function CalgarySection() {
               className="calgary-card"
               style={{
                 backgroundColor: colors.background.card,
-                padding: '2rem',
+                padding: '1.75rem',
                 borderRadius: '1rem',
                 boxShadow: shadows.sm,
                 border: `1px solid ${colors.border.default}`,
@@ -94,31 +94,31 @@ export function CalgarySection() {
             >
               <div
                 style={{
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '1rem',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '0.75rem',
                   backgroundColor: 'rgba(15, 118, 110, 0.1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '1.5rem',
+                  marginBottom: '1.25rem',
                 }}
               >
-                <factor.icon size={28} color={colors.accent.teal} />
+                <factor.icon size={24} color={colors.accent.teal} />
               </div>
               <h3
                 style={{
-                  fontSize: '1.25rem',
+                  fontSize: '1.125rem',
                   fontWeight: '600',
                   color: colors.text.primary,
-                  marginBottom: '0.75rem',
+                  marginBottom: '0.5rem',
                 }}
               >
                 {factor.title}
               </h3>
               <p
                 style={{
-                  fontSize: '1rem',
+                  fontSize: '0.9375rem',
                   lineHeight: '1.6',
                   color: colors.text.secondary,
                   margin: 0,
@@ -128,34 +128,6 @@ export function CalgarySection() {
               </p>
             </div>
           ))}
-        </div>
-
-        <div
-          className="calgary-card"
-          style={{
-            backgroundColor: colors.background.card,
-            padding: '2rem',
-            borderRadius: '1.5rem',
-            boxShadow: shadows.sm,
-            border: `1px solid ${colors.border.default}`,
-            maxWidth: '820px',
-          }}
-        >
-          <p
-            style={{
-              fontSize: '1.0625rem',
-              lineHeight: '1.7',
-              color: colors.text.secondary,
-              margin: 0,
-            }}
-          >
-            These aren&apos;t reasons to avoid a coated floor — they&apos;re
-            reasons to choose the right system, work with someone who understands
-            local conditions, and budget for proper preparation. When you request
-            a quote, the details about your Calgary garage (attached or detached,
-            heated or not, how it&apos;s used) help contractors give you
-            something more realistic than a blanket number.
-          </p>
         </div>
       </div>
     </section>

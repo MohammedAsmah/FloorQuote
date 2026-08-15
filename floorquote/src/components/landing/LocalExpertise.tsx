@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Thermometer, Snowflake, Sun, Hammer, MapPin, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 import { colors, shadows, transitions } from '@/src/lib/design-system';
 
 export function LocalExpertise() {
@@ -189,6 +190,26 @@ export function LocalExpertise() {
           >
             FloorQuote uses real Calgary market data and connects you with local contractors who understand 
             our unique climate and conditions. Get estimates that account for everything that makes Calgary different.
+          </p>
+          <p
+            style={{
+              fontSize: '1.125rem',
+              color: colors.text.secondary,
+              maxWidth: '600px',
+              margin: '1.25rem auto 0',
+              lineHeight: '1.6',
+            }}
+          >
+            Planning a garage floor project here? Learn more about{' '}
+            <Link
+              href="/calgary-garage-flooring"
+              style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = colors.accent.darkBlue)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = colors.accent.blue)}
+            >
+              garage flooring in Calgary
+            </Link>{' '}
+            — the options, costs, and local considerations worth planning around.
           </p>
         </motion.div>
       </motion.div>

@@ -1,44 +1,38 @@
-import { Shield, Droplets, Snowflake, Sparkles, Wrench, Paintbrush } from 'lucide-react';
+import { Snowflake, Droplets, Shield, FlaskConical, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { colors, shadows } from '@/lib/design-system';
 
 export function IntroSection() {
   const benefits = [
     {
-      icon: Shield,
-      title: 'Durability',
-      description:
-        'Protection against daily wear from vehicles, tools, and foot traffic — the kind of use a garage sees year-round.',
-    },
-    {
-      icon: Droplets,
-      title: 'Chemical and oil resistance',
-      description:
-        'A sealed surface that makes oil drips, coolant, and cleaning products much easier to wipe up.',
-    },
-    {
       icon: Snowflake,
       title: 'Winter and salt',
       description:
-        'A smoother, sealed surface that stands up to the salt, sand, and slush Calgary winters drag into the garage.',
+        'Resists the salt, sand, and slush Calgary winters drag into the garage on tires and boots.',
     },
     {
-      icon: Wrench,
+      icon: Droplets,
       title: 'Moisture',
       description:
-        'A coated floor is less likely to absorb water from melting snow or washing, keeping the slab drier over time.',
+        'A sealed surface stays drier as snow melts off the car, protecting the slab over time.',
     },
     {
-      icon: Paintbrush,
-      title: 'Appearance',
+      icon: Shield,
+      title: 'Durability',
       description:
-        'A finished look that suits workshops, home gyms, storage spaces, or simply a cleaner entry from the car.',
+        'Stands up to daily vehicle traffic, tools, and foot traffic without staining or dusting.',
+    },
+    {
+      icon: FlaskConical,
+      title: 'Chemicals and oil',
+      description:
+        'Oil drips, coolant, and de-icing chemicals wipe up instead of soaking into bare concrete.',
     },
     {
       icon: Sparkles,
-      title: 'Easier maintenance',
+      title: 'Easier to clean',
       description:
-        'Sweeping and washing are quicker on a sealed floor, and stains don\u2019t settle into bare concrete.',
+        'Sweep or rinse the floor down — no stains, no dust, and no constant scrubbing.',
     },
   ];
 
@@ -67,51 +61,13 @@ export function IntroSection() {
             fontSize: '1.125rem',
             lineHeight: '1.75',
             color: colors.text.secondary,
-            marginBottom: '1.25rem',
-            maxWidth: '820px',
-          }}
-        >
-          A garage floor works harder than almost any other surface in a home. In
-          Calgary it takes daily vehicle traffic, oil and fluid drips, winter salt
-          and de-icing chemicals, melting snow, and temperature swings that can
-          move from deep freeze to double digits in a single week. Over time, bare
-          concrete absorbs stains, holds dust, and gets harder to clean.
-        </p>
-
-        <p
-          style={{
-            fontSize: '1.125rem',
-            lineHeight: '1.75',
-            color: colors.text.secondary,
-            marginBottom: '1.25rem',
-            maxWidth: '820px',
-          }}
-        >
-          Garage flooring — usually a protective coating or system applied
-          directly to the concrete — is one way homeowners keep that surface
-          looking good and working well. The right choice depends on how you use
-          your garage, your budget, and the condition of your concrete. There is
-          no single best system for everyone, which is why it helps to understand
-          the options before contacting companies.
-        </p>
-
-        <p
-          style={{
-            fontSize: '1.125rem',
-            lineHeight: '1.75',
-            color: colors.text.secondary,
             marginBottom: '3rem',
             maxWidth: '820px',
           }}
         >
-          If you&apos;d like a cost picture before you dig into the details,{' '}
-          <Link
-            href="/calculator"
-            style={{ color: colors.accent.blue, textDecoration: 'underline' }}
-          >
-            use our garage flooring cost calculator
-          </Link>{' '}
-          to see how your project compares.
+          A garage floor takes daily vehicle traffic, winter salt, melting snow,
+          and big temperature swings \u2014 and bare concrete shows it. A
+          protective coating keeps that surface looking good and working well.
         </p>
 
         <div
@@ -124,7 +80,7 @@ export function IntroSection() {
               className="calgary-card"
               style={{
                 backgroundColor: colors.background.card,
-                padding: '2rem',
+                padding: '1.75rem',
                 borderRadius: '1rem',
                 boxShadow: shadows.sm,
                 border: `1px solid ${colors.border.default}`,
@@ -134,31 +90,31 @@ export function IntroSection() {
             >
               <div
                 style={{
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '1rem',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '0.75rem',
                   backgroundColor: 'rgba(37, 99, 235, 0.1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '1.5rem',
+                  marginBottom: '1.25rem',
                 }}
               >
-                <benefit.icon size={28} color={colors.accent.blue} />
+                <benefit.icon size={24} color={colors.accent.blue} />
               </div>
               <h3
                 style={{
-                  fontSize: '1.25rem',
+                  fontSize: '1.125rem',
                   fontWeight: '600',
                   color: colors.text.primary,
-                  marginBottom: '0.75rem',
+                  marginBottom: '0.5rem',
                 }}
               >
                 {benefit.title}
               </h3>
               <p
                 style={{
-                  fontSize: '1rem',
+                  fontSize: '0.9375rem',
                   lineHeight: '1.6',
                   color: colors.text.secondary,
                   margin: 0,
@@ -169,6 +125,25 @@ export function IntroSection() {
             </div>
           ))}
         </div>
+
+        <p
+          style={{
+            fontSize: '1rem',
+            lineHeight: '1.75',
+            color: colors.text.secondary,
+            maxWidth: '820px',
+            marginTop: '2.5rem',
+          }}
+        >
+          Want a cost picture first?{' '}
+          <Link
+            href="/calculator"
+            style={{ color: colors.accent.blue, textDecoration: 'underline' }}
+          >
+            Estimate your garage flooring cost
+          </Link>{' '}
+          before digging into the details.
+        </p>
       </div>
     </section>
   );

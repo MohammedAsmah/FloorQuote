@@ -1,13 +1,7 @@
-'use client';
-
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { colors, transitions } from '@/lib/design-system';
+import { colors } from '@/lib/design-system';
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   const faqs = [
     {
       question: 'How much does garage flooring cost in Calgary?',
@@ -22,7 +16,7 @@ export function FAQSection() {
     {
       question: 'Is epoxy good for garage floors?',
       answer:
-        'Yes. Epoxy is one of the most popular garage floor systems because it\u2019s durable, chemical-resistant, and relatively affordable. Success depends heavily on surface preparation. Some epoxy formulations can amber or yellow with strong UV exposure, so discuss your situation (like a south-facing garage door) with your installer.',
+        'Yes. Epoxy is one of the most popular garage floor systems because it\u2019s durable, chemical-resistant, and relatively affordable. Success depends heavily on surface preparation, and some epoxies can amber or yellow with strong UV exposure \u2014 so discuss your garage\u2019s sun exposure with your installer.',
     },
     {
       question: 'Is polyaspartic better than epoxy?',
@@ -35,40 +29,21 @@ export function FAQSection() {
         'Lifespan depends on the system, surface preparation, and how the floor is used. Epoxy systems commonly last in the 5\u201310 year range, while polyaspartic systems are frequently quoted in the 10\u201315+ year range. Quality preparation and basic maintenance are the biggest factors in reaching those numbers.',
     },
     {
-      question: 'Can garage floor coating be applied to old concrete?',
-      answer:
-        'Yes, in most cases. Older concrete can be coated as long as it\u2019s structurally sound, clean, and properly prepared. Cracks and damage get repaired first, and the prep work may add to the cost \u2014 which is exactly why an in-person look beats a phone estimate.',
-    },
-    {
       question: 'Does garage floor coating work in cold weather?',
       answer:
         'Installed coatings handle cold weather fine once cured. Application is the temperature-sensitive part \u2014 most coatings have minimum application and curing temperatures. That\u2019s why installers schedule around the weather, and why heated attached garages are easier to work in during Calgary winters.',
     },
     {
-      question: 'How much does it cost to coat a two-car garage?',
+      question: 'Can garage floor coating be applied to old concrete?',
       answer:
-        'There\u2019s no reliable one-size-fits-all number. Two-car garages come in different sizes, and cost depends on your concrete\u2019s condition and the system you choose. The most useful step is a personalized estimate: use the calculator for a ballpark based on your garage, then request quotes to compare real numbers.',
+        'Yes, in most cases. Older concrete can be coated as long as it\u2019s structurally sound, clean, and properly prepared. Cracks and damage get repaired first, and the prep work may add to the cost \u2014 which is exactly why an in-person look beats a phone estimate.',
     },
     {
-      question: 'How long does garage floor coating take?',
+      question: 'What should I ask a garage flooring contractor in Calgary?',
       answer:
-        'It depends on the system and how much preparation is needed. Fast-cure systems can often be installed within a day or two, while systems with longer cure times take longer. Ask for a clear timeline before you commit \u2014 preparation time is usually the variable.',
-    },
-    {
-      question: 'What preparation is needed before coating a garage floor?',
-      answer:
-        'Standard preparation includes cleaning and degreasing, mechanical grinding or diamond profiling to create a bondable surface, and repair of cracks or damage. Moisture testing may be recommended for some slabs. Preparation is the most important part of the job \u2014 it\u2019s where adhesion is won or lost.',
-    },
-    {
-      question: 'Can garage floor coatings handle road salt and vehicle fluids?',
-      answer:
-        'Quality coatings are designed to resist chemicals and stains, including the salt, sand, and de-icing materials Calgary winters track in, plus common vehicle fluids. No floor is indestructible \u2014 wipe up spills and clean periodically and the coating will last longer.',
+        'Ask what surface preparation is included in the quote, which system and how many coats are used, how moisture issues are handled, what the warranty covers, and how long your garage will be out of commission. Preparation time is usually the variable that moves the final number.',
     },
   ];
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
 
   return (
     <section
@@ -103,27 +78,10 @@ export function FAQSection() {
           Straight answers to the questions Calgary homeowners ask most often.
         </p>
 
-        <div style={{ maxWidth: '820px', margin: '0 auto' }}>
-          {faqs.map((faq, index) => (
-            <div key={faq.question} style={{ marginBottom: '1rem' }}>
-              <motion.button
-                onClick={() => toggleFAQ(index)}
-                style={{
-                  width: '100%',
-                  padding: '1.5rem',
-                  backgroundColor: colors.background.card,
-                  border: `1px solid ${colors.border.default}`,
-                  borderRadius: '0.75rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  textAlign: 'left',
-                  transition: `background-color ${transitions.fast}`,
-                }}
-                whileHover={{ backgroundColor: colors.background.card }}
-                aria-expanded={openIndex === index}
-              >
+        <div className="calgary-faq" style={{ maxWidth: '820px', margin: '0 auto' }}>
+          {faqs.map((faq) => (
+            <details key={faq.question}>
+              <summary>
                 <span
                   style={{
                     fontSize: '1.125rem',
@@ -134,60 +92,27 @@ export function FAQSection() {
                 >
                   {faq.question}
                 </span>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  style={{ marginLeft: '1rem', flexShrink: 0 }}
+                <ChevronDown
+                  size={20}
+                  color={colors.text.secondary}
+                  className="faq-chevron"
+                />
+              </summary>
+              <div className="calgary-faq-answer">
+                <p
+                  style={{
+                    fontSize: '1rem',
+                    lineHeight: '1.6',
+                    color: colors.text.secondary,
+                  }}
                 >
-                  <ChevronDown size={20} color={colors.text.secondary} />
-                </motion.div>
-              </motion.button>
-
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    style={{
-                      overflow: 'hidden',
-                      backgroundColor: colors.background.card,
-                      border: `1px solid ${colors.border.default}`,
-                      borderTop: 'none',
-                      borderBottomLeftRadius: '0.75rem',
-                      borderBottomRightRadius: '0.75rem',
-                    }}
-                  >
-                    <div className="calgary-faq-answer" style={{ padding: '1.5rem' }}>
-                      <p
-                        style={{
-                          fontSize: '1rem',
-                          lineHeight: '1.6',
-                          color: colors.text.secondary,
-                        }}
-                      >
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                  {faq.answer}
+                </p>
+              </div>
+            </details>
           ))}
         </div>
       </div>
-
-      <style jsx global>{`
-        @media (max-width: 640px) {
-          section > div > div > div > button {
-            padding: 1rem !important;
-          }
-          section > div > div > div > button > span {
-            font-size: 1rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -52,6 +52,13 @@ export function ComparisonSection() {
     },
   ];
 
+  const columns = [
+    { key: 'appearance', label: 'Appearance' },
+    { key: 'durability', label: 'Durability' },
+    { key: 'bestFor', label: 'Best for' },
+    { key: 'maintenance', label: 'Maintenance considerations' },
+  ] as const;
+
   return (
     <section
       className="calgary-section"
@@ -81,11 +88,15 @@ export function ComparisonSection() {
           }}
         >
           Some homeowners already have bare concrete or painted floors and wonder
-          how a coating compares. Here&apos;s an honest comparison of the most
+          how a coating compares. Here&apos;s an honest side-by-side of the most
           common starting points.
         </p>
 
-        <div className="calgary-table-scroll" style={{ borderRadius: '1rem' }}>
+        {/* Desktop table */}
+        <div
+          className="calgary-table-desktop calgary-table-scroll"
+          style={{ borderRadius: '1rem' }}
+        >
           <table
             style={{
               width: '100%',
@@ -99,24 +110,35 @@ export function ComparisonSection() {
           >
             <thead>
               <tr style={{ backgroundColor: colors.background.primary }}>
-                {['Option', 'Appearance', 'Durability', 'Best for', 'Maintenance considerations'].map(
-                  (header) => (
-                    <th
-                      key={header}
-                      scope="col"
-                      style={{
-                        textAlign: 'left',
-                        padding: '1rem 1.25rem',
-                        fontSize: '0.875rem',
-                        fontWeight: '600',
-                        color: colors.text.primary,
-                        borderBottom: `1px solid ${colors.border.default}`,
-                      }}
-                    >
-                      {header}
-                    </th>
-                  )
-                )}
+                <th
+                  scope="col"
+                  style={{
+                    textAlign: 'left',
+                    padding: '1rem 1.25rem',
+                    fontSize: '0.875rem',
+                    fontWeight: '600',
+                    color: colors.text.primary,
+                    borderBottom: `1px solid ${colors.border.default}`,
+                  }}
+                >
+                  Option
+                </th>
+                {columns.map((column) => (
+                  <th
+                    key={column.key}
+                    scope="col"
+                    style={{
+                      textAlign: 'left',
+                      padding: '1rem 1.25rem',
+                      fontSize: '0.875rem',
+                      fontWeight: '600',
+                      color: colors.text.primary,
+                      borderBottom: `1px solid ${colors.border.default}`,
+                    }}
+                  >
+                    {column.label}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
@@ -141,50 +163,87 @@ export function ComparisonSection() {
                   >
                     {row.option}
                   </td>
-                  <td
-                    style={{
-                      padding: '1rem 1.25rem',
-                      fontSize: '0.9375rem',
-                      color: colors.text.secondary,
-                      borderBottom: `1px solid ${colors.border.subtle}`,
-                    }}
-                  >
-                    {row.appearance}
-                  </td>
-                  <td
-                    style={{
-                      padding: '1rem 1.25rem',
-                      fontSize: '0.9375rem',
-                      color: colors.text.secondary,
-                      borderBottom: `1px solid ${colors.border.subtle}`,
-                    }}
-                  >
-                    {row.durability}
-                  </td>
-                  <td
-                    style={{
-                      padding: '1rem 1.25rem',
-                      fontSize: '0.9375rem',
-                      color: colors.text.secondary,
-                      borderBottom: `1px solid ${colors.border.subtle}`,
-                    }}
-                  >
-                    {row.bestFor}
-                  </td>
-                  <td
-                    style={{
-                      padding: '1rem 1.25rem',
-                      fontSize: '0.9375rem',
-                      color: colors.text.secondary,
-                      borderBottom: `1px solid ${colors.border.subtle}`,
-                    }}
-                  >
-                    {row.maintenance}
-                  </td>
+                  {columns.map((column) => (
+                    <td
+                      key={column.key}
+                      style={{
+                        padding: '1rem 1.25rem',
+                        fontSize: '0.9375rem',
+                        color: colors.text.secondary,
+                        borderBottom: `1px solid ${colors.border.subtle}`,
+                      }}
+                    >
+                      {row[column.key]}
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile stacked cards */}
+        <div className="calgary-compare-cards">
+          {rows.map((row) => (
+            <div
+              key={row.option}
+              className="calgary-card"
+              style={{
+                backgroundColor: colors.background.card,
+                padding: '1.5rem',
+                borderRadius: '1rem',
+                boxShadow: shadows.sm,
+                border: `1px solid ${colors.border.default}`,
+                width: '100%',
+                boxSizing: 'border-box',
+              }}
+            >
+              <div
+                style={{
+                  fontSize: '1.125rem',
+                  fontWeight: '600',
+                  color: colors.text.primary,
+                  marginBottom: '0.25rem',
+                }}
+              >
+                {row.option}
+              </div>
+              {columns.map((column, index) => (
+                <div
+                  key={column.key}
+                  style={{
+                    padding: '0.75rem 0',
+                    borderBottom:
+                      index < columns.length - 1
+                        ? `1px solid ${colors.border.subtle}`
+                        : 'none',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: '0.75rem',
+                      fontWeight: '600',
+                      color: '#64748B',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      marginBottom: '0.25rem',
+                    }}
+                  >
+                    {column.label}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '0.9375rem',
+                      lineHeight: '1.5',
+                      color: colors.text.secondary,
+                    }}
+                  >
+                    {row[column.key]}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
 
         <p

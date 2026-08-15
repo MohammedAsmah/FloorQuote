@@ -71,7 +71,7 @@ export function LeadSection() {
               lineHeight: '1.15',
             }}
           >
-            Planning a Garage Flooring Project in Calgary?
+            Ready to Estimate Your Calgary Garage Floor?
           </h2>
 
           <p

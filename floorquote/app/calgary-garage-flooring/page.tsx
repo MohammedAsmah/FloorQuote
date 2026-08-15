@@ -70,10 +70,10 @@ export default function CalgaryGarageFlooringPage() {
       <IntroSection />
       <OptionsSection />
       <CostSection />
-      <CalgarySection />
+      <ComparisonSection />
       <ProcessSection />
       <ChooseSection />
-      <ComparisonSection />
+      <CalgarySection />
       <FAQSection />
       <LeadSection />
       <Footer />

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Calculator, BookOpen, Mail, Info } from 'lucide-react';
+import { Menu, X, Calculator, BookOpen, Mail, Info, Map } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { colors, shadows, transitions, zIndex } from '@/lib/design-system';
@@ -33,6 +33,7 @@ export function Navigation() {
 
   const navLinks = [
     { name: 'Calculator', href: '/calculator', icon: Calculator },
+    { name: 'Calgary Garage Floors', href: '/calgary-garage-flooring', icon: Map },
     { name: 'How It Works', href: '/#how-it-works', icon: BookOpen },
     { name: 'About', href: '/about', icon: Info },
     { name: 'Contact', href: '/contact', icon: Mail },
