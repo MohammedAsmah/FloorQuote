@@ -194,6 +194,26 @@ export function CostSection() {
             Estimate Your Garage Flooring Cost
           </Link>
         </div>
+
+        <p
+          style={{
+            fontSize: '1rem',
+            lineHeight: 1.7,
+            color: colors.text.secondary,
+            maxWidth: '820px',
+            margin: '2rem auto 0',
+            textAlign: 'center',
+          }}
+        >
+          Want a deeper look at what drives prices? See our complete guide to{' '}
+          <Link
+            href="/calgary-garage-flooring-cost"
+            style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}
+          >
+            garage flooring cost in Calgary
+          </Link>
+          .
+        </p>
       </div>
     </section>
   );

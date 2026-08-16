@@ -8,9 +8,11 @@ import { colors, transitions } from '@/lib/design-system';
 
 export function Footer() {
   const footerLinks = {
-    floorquote: [
-      { name: 'Calculator', href: '/calculator' },
-      { name: 'Request Quotes', href: '/quotes' },
+    garageFlooring: [
+      { name: 'Garage Flooring in Calgary', href: '/calgary-garage-flooring' },
+      { name: 'Garage Flooring Cost in Calgary', href: '/calgary-garage-flooring-cost' },
+      { name: 'Garage Flooring Calculator', href: '/calculator' },
+      { name: 'Get Garage Flooring Quotes', href: '/quotes' },
       { name: 'How It Works', href: '/#how-it-works' },
     ],
     company: [
@@ -100,10 +102,10 @@ export function Footer() {
                 letterSpacing: '0.05em',
               }}
             >
-              FloorQuote
+              Garage Flooring
             </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              {footerLinks.floorquote.map((link) => (
+              {footerLinks.garageFlooring.map((link) => (
                 <li key={link.name} style={{ marginBottom: '0.75rem' }}>
                   <Link
                     href={link.href}
