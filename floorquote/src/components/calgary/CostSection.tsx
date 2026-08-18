@@ -212,6 +212,13 @@ export function CostSection() {
           >
             garage flooring cost in Calgary
           </Link>
+          . Not sure which coating system fits? Compare{' '}
+          <Link
+            href="/epoxy-vs-polyaspartic-garage-floor-calgary"
+            style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}
+          >
+            epoxy vs polyaspartic garage floors
+          </Link>
           .
         </p>
       </div>

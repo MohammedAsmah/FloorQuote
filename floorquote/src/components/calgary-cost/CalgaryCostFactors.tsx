@@ -71,7 +71,11 @@ export function CalgaryCostFactors() {
           <Link href="/calgary-garage-flooring" style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
             garage flooring in Calgary
           </Link>{' '}
-          guide.
+          guide. Want to compare how different coatings handle local conditions?{' '}
+          <Link href="/epoxy-vs-polyaspartic-garage-floor-calgary" style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
+            see how epoxy and polyaspartic compare in Calgary
+          </Link>
+          .
         </p>
       </div>
     </section>

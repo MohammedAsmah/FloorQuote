@@ -11,6 +11,7 @@ export function Footer() {
     garageFlooring: [
       { name: 'Garage Flooring in Calgary', href: '/calgary-garage-flooring' },
       { name: 'Garage Flooring Cost in Calgary', href: '/calgary-garage-flooring-cost' },
+      { name: 'Epoxy vs Polyaspartic Garage Floors', href: '/epoxy-vs-polyaspartic-garage-floor-calgary' },
       { name: 'Garage Flooring Calculator', href: '/calculator' },
       { name: 'Get Garage Flooring Quotes', href: '/quotes' },
       { name: 'How It Works', href: '/#how-it-works' },

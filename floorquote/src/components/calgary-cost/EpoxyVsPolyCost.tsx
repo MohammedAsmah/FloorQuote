@@ -1,4 +1,5 @@
 import { Shield, Zap, Droplets } from 'lucide-react';
+import Link from 'next/link';
 import { colors, shadows } from '@/lib/design-system';
 
 const systems = [
@@ -126,7 +127,14 @@ export function EpoxyVsPolyCost() {
           Metallic and quartz systems fall in a similar range to polyurea.
           The right system depends on your budget, how you use the garage, and
           your concrete&apos;s condition — not one system being universally
-          &quot;better.&quot;
+          &quot;better.&quot; Want a detailed side-by-side comparison? See our{' '}
+          <Link
+            href="/epoxy-vs-polyaspartic-garage-floor-calgary"
+            style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}
+          >
+            epoxy vs polyaspartic garage floors guide
+          </Link>
+          .
         </p>
       </div>
     </section>
