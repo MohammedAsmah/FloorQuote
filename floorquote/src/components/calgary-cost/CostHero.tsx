@@ -180,10 +180,10 @@ export function CostHero() {
             <div className="cost-card-result">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: '600', color: colors.text.muted, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Estimated range
+                  Sample estimate
                 </span>
                 <span style={{ fontSize: '0.6875rem', fontWeight: '500', color: colors.accent.teal }}>
-                  Based on your inputs
+                  Illustrative only
                 </span>
               </div>
               <div className="cost-card-shimmer">
@@ -192,7 +192,7 @@ export function CostHero() {
                 </span>
               </div>
               <div style={{ fontSize: '0.8125rem', color: colors.text.muted, marginTop: '0.375rem' }}>
-                CAD · varies by project details
+                Illustrative example — calculate your actual estimate
               </div>
             </div>
 
