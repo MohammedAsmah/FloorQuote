@@ -77,7 +77,7 @@ export function CompareHero() {
               Compare My Options
               <ArrowRight size={20} />
             </a>
-            <Link href="/calculator" className="calgary-btn-secondary">
+            <Link href="/calculator/start" className="calgary-btn-secondary">
               Calculate My Garage Cost
               <ArrowRight size={20} />
             </Link>
@@ -147,7 +147,7 @@ export function CompareHero() {
 
             <div className="compare-visual-footer">
               <p>Your actual cost depends on your garage&mdash;not just the coating.</p>
-              <Link href="/calculator" className="compare-visual-footer-link">
+              <Link href="/calculator/start" className="compare-visual-footer-link">
                 See your personalized estimate
                 <ArrowRight size={14} />
               </Link>

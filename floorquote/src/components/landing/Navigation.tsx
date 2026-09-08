@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Calculator, BookOpen, Mail, Info, Map } from 'lucide-react';
 import Image from 'next/image';
@@ -10,6 +11,15 @@ import { colors, shadows, transitions, zIndex } from '@/lib/design-system';
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href.startsWith('/#')) {
+      const base = href.split('#')[0];
+      return pathname === (base || '/');
+    }
+    return pathname === href;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +42,7 @@ export function Navigation() {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Calculator', href: '/calculator', icon: Calculator },
+    { name: 'Cost Calculator', href: '/calculator', icon: Calculator },
     { name: 'Calgary Garage Floors', href: '/calgary-garage-flooring', icon: Map },
     { name: 'How It Works', href: '/#how-it-works', icon: BookOpen },
     { name: 'About', href: '/about', icon: Info },
@@ -78,28 +88,32 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div style={{ display: 'none', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                style={{
-                  textDecoration: 'none',
-                  color: colors.text.secondary,
-                  fontSize: '0.9375rem',
-                  fontWeight: '500',
-                  transition: `color ${transitions.fast}`,
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.color = colors.text.primary}
-                onMouseLeave={(e) => e.currentTarget.style.color = colors.text.secondary}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  style={{
+                    textDecoration: 'none',
+                    color: active ? colors.accent.blue : colors.text.secondary,
+                    fontSize: '0.9375rem',
+                    fontWeight: active ? '600' : '500',
+                    transition: `color ${transitions.fast}`,
+                  }}
+                  aria-current={active ? 'page' : undefined}
+                  onMouseEnter={(e) => e.currentTarget.style.color = colors.text.primary}
+                  onMouseLeave={(e) => e.currentTarget.style.color = active ? colors.accent.blue : colors.text.secondary}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Desktop CTAs */}
           <div style={{ display: 'none', alignItems: 'center', gap: '1rem' }} className="desktop-ctas">
-            <Link href="/calculator">
+            <Link href="/calculator/start">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -180,34 +194,38 @@ export function Navigation() {
             }}
           >
             <div style={{ padding: '1.5rem' }}>
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem',
-                      padding: '1rem 0',
-                      textDecoration: 'none',
-                      color: colors.text.primary,
-                      fontSize: '1rem',
-                      fontWeight: '500',
-                    }}
+              {navLinks.map((link, index) => {
+                const active = isActive(link.href);
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    <link.icon size={20} color={colors.accent.blue} />
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.75rem',
+                        padding: '1rem 0',
+                        textDecoration: 'none',
+                        color: active ? colors.accent.blue : colors.text.primary,
+                        fontSize: '1rem',
+                        fontWeight: active ? '700' : '500',
+                      }}
+                      aria-current={active ? 'page' : undefined}
+                    >
+                      <link.icon size={20} color={colors.accent.blue} />
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.5rem' }}>
-                <Link href="/calculator" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/calculator/start" onClick={() => setIsMobileMenuOpen(false)}>
                   <motion.button
                     whileTap={{ scale: 0.98 }}
                     style={{

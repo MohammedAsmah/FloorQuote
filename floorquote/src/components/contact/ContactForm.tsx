@@ -116,7 +116,7 @@ export function ContactForm() {
                   <Button variant="primary" onClick={() => setSubmitStatus('idle')}>
                     Send Another Message
                   </Button>
-                  <Link href="/calculator">
+                  <Link href="/calculator/start">
                     <Button variant="secondary">
                       Get My Free Estimate
                     </Button>

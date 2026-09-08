@@ -138,7 +138,7 @@ export function CostSection() {
             preparation scope and finish choice. Use the calculator to compare
             based on your actual garage.
           </p>
-          <Link href="/calculator" className="calgary-btn-primary" style={{ display: 'inline-flex' }}>
+          <Link href="/calculator/start" className="calgary-btn-primary" style={{ display: 'inline-flex' }}>
             Calculate My Garage Flooring Cost
             <ArrowRight size={18} />
           </Link>

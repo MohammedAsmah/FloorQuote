@@ -133,7 +133,7 @@ export function Hero() {
                 Get a Garage Flooring Estimate
                 <ArrowRight size={20} />
               </Link>
-              <Link href="/calculator" className="calgary-btn-secondary">
+              <Link href="/calculator/start" className="calgary-btn-secondary">
                 Calculate Your Garage Floor Cost
               </Link>
             </div>

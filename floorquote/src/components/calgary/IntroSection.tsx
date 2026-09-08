@@ -136,10 +136,10 @@ export function IntroSection() {
           }}
         >
           Want a cost picture first?{' '}
-          <Link
-            href="/calculator"
-            style={{ color: colors.accent.blue, textDecoration: 'underline' }}
-          >
+<Link
+                    href="/calculator/start"
+                    style={{ color: colors.accent.blue, textDecoration: 'underline' }}
+                  >
             Estimate your garage flooring cost
           </Link>{' '}
           before digging into the details.

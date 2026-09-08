@@ -116,7 +116,7 @@ export function DecisionGuide() {
             to estimate your project.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
-            <Link href="/calculator" className="calgary-btn-primary">
+            <Link href="/calculator/start" className="calgary-btn-primary">
               Calculate My Garage Flooring Cost
               <ArrowRight size={18} />
             </Link>

@@ -223,25 +223,25 @@ export function Footer() {
             © {new Date().getFullYear()} FloorQuote. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem' }}>
-            <Link href="/calculator">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                style={{
-                  padding: '0.625rem 1.25rem',
-                  backgroundColor: colors.accent.blue,
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '0.5rem',
-                  fontSize: '0.875rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: `transform ${transitions.fast}`,
-                }}
-              >
-                Get My Free Estimate
-              </motion.button>
-            </Link>
+<Link href="/calculator/start">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    padding: '0.625rem 1.25rem',
+                    backgroundColor: colors.accent.blue,
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '0.5rem',
+                    fontSize: '0.875rem',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: `transform ${transitions.fast}`,
+                  }}
+                >
+                  Get My Free Estimate
+                </motion.button>
+              </Link>
             <Link href="/quotes">
               <motion.button
                 whileHover={{ scale: 1.02 }}

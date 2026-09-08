@@ -35,7 +35,7 @@ export function WhichIsBetter() {
           explain how each system works and what changes your actual
           estimate.
         </p>
-        <Link href="/calculator" className="calgary-btn-primary" style={{ display: 'inline-flex' }}>
+        <Link href="/calculator/start" className="calgary-btn-primary" style={{ display: 'inline-flex' }}>
           Compare My Options
           <ArrowRight size={18} />
         </Link>

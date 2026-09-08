@@ -158,10 +158,10 @@ export function ChooseSection() {
             Use the calculator to compare options for your specific garage, with
             Calgary market pricing \u2014 before you contact any company.
           </p>
-          <Link href="/calculator" className="calgary-btn-primary">
-            Estimate Your Options
-            <ArrowRight size={20} />
-          </Link>
+<Link href="/calculator/start" className="calgary-btn-primary">
+              Estimate Your Options
+              <ArrowRight size={20} />
+            </Link>
         </div>
       </div>
     </section>

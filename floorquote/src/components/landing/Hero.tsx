@@ -71,7 +71,7 @@ export function Hero() {
               className="hero-buttons"
               style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}
             >
-              <Link href="/calculator">
+              <Link href="/calculator/start">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

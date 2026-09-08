@@ -113,7 +113,7 @@ export function ExampleScenarios() {
         <p style={{ fontSize: '1rem', lineHeight: 1.7, color: colors.text.secondary, maxWidth: '820px', marginTop: '2rem' }}>
           These are qualitative descriptions, not price guarantees. To see an
           estimate based on your actual project details,{' '}
-          <Link href="/calculator" style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
+          <Link href="/calculator/start" style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
             calculate your garage flooring cost
           </Link>{' '}
           using FloorQuote&apos;s Calgary pricing model.

@@ -84,7 +84,7 @@ export function CostHero() {
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', alignItems: 'flex-start' }}>
-            <Link href="/calculator" className="calgary-btn-primary">
+            <Link href="/calculator/start" className="calgary-btn-primary">
               Get Your Calgary Garage Flooring Estimate
               <ArrowRight size={20} />
             </Link>
@@ -198,7 +198,7 @@ export function CostHero() {
 
             {/* CTA */}
             <div style={{ padding: '0 1.5rem 1.25rem' }}>
-              <Link href="/calculator" className="cost-card-cta">
+              <Link href="/calculator/start" className="cost-card-cta">
                 Calculate My Estimate
                 <ArrowRight size={18} />
               </Link>

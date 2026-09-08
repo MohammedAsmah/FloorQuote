@@ -296,7 +296,7 @@ export function QuoteRequestForm() {
                   Back to FloorQuote
                 </Button>
               </Link>
-              <Link href="/calculator">
+              <Link href="/calculator/start">
                 <Button variant="primary" size="lg">
                   Get a Free Estimate <Sparkles size={18} className="ml-2" />
                 </Button>

@@ -112,7 +112,7 @@ export function FinalCTA() {
                 flexWrap: 'wrap',
               }}
             >
-              <Link href="/calculator">
+              <Link href="/calculator/start">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

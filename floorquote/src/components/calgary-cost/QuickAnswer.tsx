@@ -24,7 +24,7 @@ export function QuickAnswer() {
           size, coating type, concrete condition, cracks, decorative finish, and
           more — so you get a realistic estimate range before contacting anyone.
         </p>
-        <Link href="/calculator" className="calgary-btn-primary">
+        <Link href="/calculator/start" className="calgary-btn-primary">
           Calculate Your Garage Flooring Cost
           <ArrowRight size={20} />
         </Link>

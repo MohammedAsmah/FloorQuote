@@ -190,9 +190,9 @@ export function CostSection() {
           condition, and coating options — so the range you get reflects your
           garage, not a one-size-fits-all number.
           </p>
-          <Link href="/calculator" className="calgary-btn-primary">
-            Estimate Your Garage Flooring Cost
-          </Link>
+<Link href="/calculator/start" className="calgary-btn-primary">
+                Estimate Your Garage Flooring Cost
+              </Link>
         </div>
 
         <p

@@ -82,7 +82,7 @@ export function ConcreteConditionCost() {
         <p style={{ fontSize: '1rem', lineHeight: 1.7, color: colors.text.secondary, maxWidth: '820px' }}>
           FloorQuote accounts for the condition of your floor when estimating
           your project.{' '}
-          <Link href="/calculator" style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
+          <Link href="/calculator/start" style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
             Enter your actual conditions
           </Link>{' '}
           to see how they affect your estimate.

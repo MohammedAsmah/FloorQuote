@@ -19,7 +19,7 @@ export function CostFinalCTA() {
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', alignItems: 'center', marginBottom: '3rem' }}>
-          <Link href="/calculator" className="calgary-btn-primary" style={{ fontSize: '1.125rem', padding: '1.125rem 2.5rem' }}>
+          <Link href="/calculator/start" className="calgary-btn-primary" style={{ fontSize: '1.125rem', padding: '1.125rem 2.5rem' }}>
             Calculate My Garage Flooring Cost
             <ArrowRight size={20} />
           </Link>

@@ -201,7 +201,7 @@ export function CalculatorPreview() {
             </div>
 
             {/* Calculator Footer */}
-            <Link href="/calculator"
+            <Link href="/calculator/start"
               className="calculator-footer"
               style={{
                 padding: '1.5rem',
@@ -302,7 +302,7 @@ export function CalculatorPreview() {
               transition={{ delay: 0.8 }}
               style={{ marginTop: '2rem' }}
             >
-              <Link href="/calculator">
+              <Link href="/calculator/start">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -326,6 +326,21 @@ export function CalculatorPreview() {
                   Start My Estimate
                   <ArrowRight size={20} />
                 </motion.button>
+              </Link>
+              <Link
+                href="/calculator"
+                style={{
+                  display: 'block',
+                  marginTop: '1rem',
+                  color: colors.accent.blue,
+                  fontSize: '0.9375rem',
+                  fontWeight: '600',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '2px',
+                  textAlign: 'center',
+                }}
+              >
+                See how the FloorQuote cost calculator works
               </Link>
             </motion.div>
           </motion.div>

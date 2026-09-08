@@ -76,7 +76,7 @@ export function GarageSizeCost() {
         <p style={{ fontSize: '1rem', lineHeight: 1.7, color: colors.text.secondary, maxWidth: '820px' }}>
           FloorQuote&apos;s calculator lets you enter your exact square footage —
           not just a category — so the estimate reflects your actual garage.{' '}
-          <Link href="/calculator" style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
+          <Link href="/calculator/start" style={{ color: colors.accent.blue, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
             Calculate your garage flooring cost
           </Link>{' '}
           with your real measurements.

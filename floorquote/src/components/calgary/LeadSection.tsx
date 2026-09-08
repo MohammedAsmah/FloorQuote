@@ -97,8 +97,8 @@ export function LeadSection() {
               flexWrap: 'wrap',
             }}
           >
-            <Link href="/calculator" className="calgary-btn-primary">
-              Calculate Your Garage Flooring Cost
+<Link href="/calculator/start" className="calgary-btn-primary">
+                Calculate Your Garage Flooring Cost
               <ArrowRight size={20} />
             </Link>
             <Link href="/quotes" className="calgary-btn-secondary">
